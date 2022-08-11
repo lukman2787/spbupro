@@ -21,21 +21,13 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
  * Route Definitions
  * --------------------------------------------------------------------
  */
-
-// create database
-$routes->get('create-db', function () {
-	$forge = \Config\Database::forge();
-	if ($forge->createDatabase('spbupro')) {
-		echo 'Database created!';
-	}
-});
 
 
 // We get a performance increase by specifying the default
@@ -47,8 +39,9 @@ $routes->get('administrator', 'Auth::login');
 // $routes->addRedirect('/', 'Admin/Dashboard::index');
 
 //controller admin dashboard
-$routes->get('/admin', 'Admin\Dashboard::index');
+$routes->get('/admin/dashboard', 'Admin\DashboardController::index');
 
+$routes->get('/admin/posts', 'Admin\PostController::index');
 
 
 // controller gawe
