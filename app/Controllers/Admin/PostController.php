@@ -8,6 +8,6 @@ class PostController extends BaseController
 {
 	public function index()
 	{
-		return view('admin/posts/index');
+		return view('backend/posts/index');
 	}
 }

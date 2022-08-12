@@ -43,20 +43,12 @@ $routes->get('/admin/dashboard', 'Admin\DashboardController::index');
 
 $routes->get('/admin/posts', 'Admin\PostController::index');
 
-
-// controller gawe
-$routes->get('admin/gawe', 'Admin/Gawe::index');
-$routes->get('admin/gawe/add', 'Admin/Gawe::create');
-$routes->post('admin/gawe', 'Admin/Gawe::store');
-$routes->get('admin/gawe/edit/(:any)', 'Admin/Gawe::edit/$1');
-$routes->put('admin/gawe/(:any)', 'Admin/Gawe::update/$1');
-$routes->delete('admin/gawe/(:segment)', 'Admin/Gawe::destroy/$1');
-
-//controller group kontak
-$routes->presenter('groups');
-
-//controller users
-$routes->get('admin/users', 'Admin/Users::index');
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static function ($routes) {
+	// Users
+	$routes->resource('user');
+	// Roles
+	$routes->resource('role');
+});
 
 /*
  * --------------------------------------------------------------------

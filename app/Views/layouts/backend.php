@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title><?= $title ?? 'CMS' ?></title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>/backend/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="<?= base_url() ?>/backend/plugins/summernote/summernote-bs4.min.css">
+
+    <?= $this->renderSection('custom-styles') ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -226,6 +228,8 @@
     <script src="<?= base_url() ?>/backend/dist/js/adminlte.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="<?= base_url() ?>/backend/dist/js/pages/dashboard.js"></script>
+
+    <?= $this->renderSection('custom-scripts') ?>
 </body>
 
 </html>
