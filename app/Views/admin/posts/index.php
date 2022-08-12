@@ -22,7 +22,23 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        
+        <div class="card">
+            <div class="card-header bg-navy">
+                <h3 class="card-title">Data Postingan</h3>
+            </div>
+            <div class="card-body table-responsive">
+                <table id="dataTable" class="table table-sm table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>No</th>
+                            <th>Judul</th>
+                            <th>Isi</th>
+                            <th>Gambar</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
     </div><!-- /.container-fluid -->
 </section>
 

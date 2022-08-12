@@ -9,9 +9,8 @@ class Crearteusers extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-			'id_user'          => [
+			'id'          => [
 				'type'           => 'BIGINT',
-				'constraint'     => 20,
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
@@ -32,7 +31,7 @@ class Crearteusers extends Migration
 				'null' => true,
 			],
 		]);
-		$this->forge->addKey('id_user', true);
+		$this->forge->addKey('id', true);
 		$this->forge->createTable('users');
 	}
 
