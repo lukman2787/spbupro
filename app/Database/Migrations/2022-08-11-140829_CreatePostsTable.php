@@ -14,10 +14,10 @@ class CreatePostsTable extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
-			'user_id' => [
-				'type'           => 'BIGINT',
-				'unsigned'       => true,
-			],
+			// 'user_id' => [
+			// 	'type'           => 'BIGINT',
+			// 	'unsigned'       => true,
+			// ],
 			'slug' => [
 				'type' => 'VARCHAR',
 				'constraint' => '255',
@@ -44,7 +44,7 @@ class CreatePostsTable extends Migration
 		]);
 
 		$this->forge->addKey('id', true);
-        $this->forge->addForeignKey('user_id', 'users', 'id');
+        // $this->forge->addForeignKey('user_id', 'users', 'id');
 		$this->forge->createTable('posts');
 	}
 

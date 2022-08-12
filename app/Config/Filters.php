@@ -21,6 +21,9 @@ class Filters extends BaseConfig
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
 		'isLoggedIn' => LoginFilter::class,
+		'login'      => \Myth\Auth\Filters\LoginFilter::class,
+		'role'       => \Myth\Auth\Filters\RoleFilter::class,
+		'permission' => \Myth\Auth\Filters\PermissionFilter::class,
 	];
 
 	/**
@@ -31,7 +34,8 @@ class Filters extends BaseConfig
 	 */
 	public $globals = [
 		'before' => [
-			// 'honeypot',
+			'honeypot',
+			'login',
 			// 'csrf',
 		],
 		'after'  => [
@@ -61,9 +65,9 @@ class Filters extends BaseConfig
 	 * @var array
 	 */
 	public $filters = [
-		'isLoggedIn' => [
+		'login' => [
 			'before' => [
-				'home', 'gawe', 'gawe/*', 'users', 'users/*'
+				'home', 'posts'
 			]
 		]
 	];
