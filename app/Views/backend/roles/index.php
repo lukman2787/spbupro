@@ -22,7 +22,7 @@
 <div class="container-fluid mb-3 d-flex justify-content-end">
     <div class="row">
         <div class="col-12">
-            <button class="btn btn-sm bg-navy" id="createNewItem">Tambah <i class="fa fa-plus"></i></button>
+            <a class="btn btn-sm bg-navy" href="<?= base_url('admin/role/new') ?>">Tambah <i class="fa fa-plus"></i></a>
         </div>
     </div>
 </div>
@@ -60,7 +60,7 @@
                                         </a>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="javascript:void(0)" data-id="<?= $role->id ?>" id="showBook" class="btn btn-sm bg-navy">View</a>
-                                            <a class="dropdown-item" href="javascript:void(0)" data-id="" class="btn bg-navy btn-sm" id="editBook">Edit</a>
+                                            <a class="dropdown-item" href="<?= base_url('admin/role/'. $role->id .'/edit') ?>" class="btn bg-navy btn-sm">Edit</a>
                                             <form action="<?= base_url('admin/role/' . $role->id) ?>" method="POST">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">

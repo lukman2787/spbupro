@@ -21,7 +21,7 @@
 <div class="container-fluid mb-3 d-flex justify-content-end">
     <div class="row">
         <div class="col-12">
-            <button class="btn btn-sm bg-navy" id="createNewItem">Tambah <i class="fa fa-plus"></i></button>
+            <a class="btn btn-sm bg-navy" href="<?= base_url('admin/user/new') ?>">Tambah <i class="fa fa-plus"></i></a>
         </div>
     </div>
 </div>
@@ -41,6 +41,7 @@
                             <th width="3%">No</th>
                             <th>username</th>
                             <th>Email</th>
+                            <th>Group</th>
                             <th style="text-align: center;" width="3%"><i class="fa fa-cogs"></i></th>
                         </tr>
                     </thead>
@@ -53,6 +54,11 @@
                                 <td class="text-center"><?= $i ?>.</td>
                                 <td><?= $user->username ?></td>
                                 <td><?= $user->email ?></td>
+                                <td>
+                                    <?php foreach($user->getRoles() as $group) : ?>
+                                        <a href=""><?= $group ?></a>
+                                    <?php endforeach ?>
+                                </td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a class="badge bg-navy dropdown-toggle dropdown-icon" data-toggle="dropdown">
