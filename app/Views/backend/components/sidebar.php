@@ -13,7 +13,7 @@
                 <img src="<?= base_url() ?>/backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block"><?= user()->username ?></a>
             </div>
         </div>
 
@@ -30,14 +30,17 @@
                         </p>
                     </a>
                 </li>
+                <?php if (has_permission('post-module')) : ?>
                 <li class="nav-item">
-                    <a href="<?= site_url('admin/posts') ?>" class="nav-link">
+                    <a href="<?= site_url('admin/post') ?>" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Postingan
                         </p>
                     </a>
                 </li>
+                <?php endif ?>
+                <?php if (has_permission('category-module')) : ?>
                 <li class="nav-item">
                     <a href="<?= site_url('admin/category') ?>" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -46,6 +49,7 @@
                         </p>
                     </a>
                 </li>
+                <?php endif ?>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
@@ -81,6 +85,7 @@
                         </li>
                     </ul>
                 </li>
+                <?php if (has_permission('user-module') || has_permission('role-module') ) : ?>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
@@ -90,19 +95,32 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        <?php if (has_permission('user-module')) : ?>
                         <li class="nav-item">
                             <a href="<?= base_url('admin/user') ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pengguna</p>
                             </a>
                         </li>
+                        <?php endif ?>
+                        <?php if (has_permission('user-module')) : ?>
                         <li class="nav-item">
                             <a href="<?= base_url('admin/role') ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Role</p>
                             </a>
                         </li>
+                        <?php endif ?>
                     </ul>
+                </li>
+                <?php endif ?>
+                <li class="nav-item">
+                    <a href="<?= site_url('logout') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Logout
+                        </p>
+                    </a>
                 </li>
             </ul>
         </nav>

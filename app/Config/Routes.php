@@ -41,15 +41,15 @@ $routes->get('administrator', 'Auth::login');
 //controller admin dashboard
 $routes->get('/admin/dashboard', 'Admin\DashboardController::index');
 
-$routes->get('/admin/posts', 'Admin\PostController::index');
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static function ($routes) {
+	$routes->resource('post', ['filter' => 'permission:post-module']);
 	// Category
-	$routes->resource('category');
+	$routes->resource('category', ['filter' => 'permission:category-module']);
 	// Users
-	$routes->resource('user');
+	$routes->resource('user', ['filter' => 'permission:user-module']);
 	// Roles
-	$routes->resource('role');
+	$routes->resource('role', ['filter' => 'permission:role-module']);
 });
 
 /*
