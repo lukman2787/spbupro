@@ -44,6 +44,8 @@ $routes->get('/admin/dashboard', 'Admin\DashboardController::index');
 $routes->get('/admin/posts', 'Admin\PostController::index');
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static function ($routes) {
+	// Category
+	$routes->resource('category');
 	// Users
 	$routes->resource('user');
 	// Roles

@@ -2,32 +2,22 @@
 
 namespace App\Database\Seeds;
 
+use App\Models\UserModel;
 use CodeIgniter\Database\Seeder;
+use Myth\Auth\Models\GroupModel;
 
 class UserSeeder extends Seeder
 {
 	public function run()
 	{
-		// $data = [
-		// 	'nama_user' => 'Administrator',
-		// 	'email_user' => 'admin@gmail.com',
-		// 	'password_user' => password_hash('123456', PASSWORD_BCRYPT),
-		// ];
-		// $this->db->table('users')->insert($data);
+		$user = new UserModel();
+		$groups = new GroupModel();
+		$user->insert([
+			'username' => 'hery123',
+			'email' => 'ikhsan@gmail.com',
+			'password_hash' => password_hash('ikhsan123', PASSWORD_BCRYPT),
+		]);
 
-		$data = [
-			[
-				'nama_user' => 'admin',
-				'email_user' => 'admin@gelo.com',
-				'password_user' => password_hash('12345678', PASSWORD_BCRYPT),
-			],
-
-			[
-				'nama_user' => 'Steven Corona',
-				'email_user' => 'steven@hms.com',
-				'password_user' => password_hash('steven', PASSWORD_BCRYPT),
-			],
-		];
-		$this->db->table('users')->insertbatch($data);
+		$groups->addUserToGroup($user->getInsertId(), 1);
 	}
 }
