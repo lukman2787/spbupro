@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-navy elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         <img src="<?= base_url() ?>/backend/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -30,9 +30,10 @@
                         </p>
                     </a>
                 </li>
+                <?php $uri = current_url(true);?>
                 <?php if (has_permission('post-module')) : ?>
                 <li class="nav-item">
-                    <a href="<?= site_url('admin/post') ?>" class="nav-link">
+                    <a href="<?= site_url('admin/post') ?>" class="nav-link <?= $uri->getSegment(2) === 'post' ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Postingan
@@ -42,7 +43,7 @@
                 <?php endif ?>
                 <?php if (has_permission('category-module')) : ?>
                 <li class="nav-item">
-                    <a href="<?= site_url('admin/category') ?>" class="nav-link">
+                    <a href="<?= site_url('admin/category') ?>" class="nav-link <?= $uri->getSegment(2) === 'category' ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Kategori
@@ -85,9 +86,9 @@
                         </li>
                     </ul>
                 </li>
-                <?php if (has_permission('user-module') || has_permission('role-module') ) : ?>
+                <?php if (has_permission('user-module') || has_permission('group-module') ) : ?>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link <?= $uri->getSegment(2) === 'user' || $uri->getSegment(2) === 'group'  ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Managemen Pengguna
@@ -97,7 +98,7 @@
                     <ul class="nav nav-treeview">
                         <?php if (has_permission('user-module')) : ?>
                         <li class="nav-item">
-                            <a href="<?= base_url('admin/user') ?>" class="nav-link">
+                            <a href="<?= base_url('admin/user') ?>" class="nav-link <?= $uri->getSegment(2) === 'user' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pengguna</p>
                             </a>
@@ -105,9 +106,9 @@
                         <?php endif ?>
                         <?php if (has_permission('user-module')) : ?>
                         <li class="nav-item">
-                            <a href="<?= base_url('admin/role') ?>" class="nav-link">
+                            <a href="<?= base_url('admin/group') ?>" class="nav-link <?= $uri->getSegment(2) === 'group' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Role</p>
+                                <p>Group</p>
                             </a>
                         </li>
                         <?php endif ?>

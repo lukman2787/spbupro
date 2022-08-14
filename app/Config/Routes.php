@@ -43,13 +43,14 @@ $routes->get('/admin/dashboard', 'Admin\DashboardController::index');
 
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static function ($routes) {
+	// Post
 	$routes->resource('post', ['filter' => 'permission:post-module']);
 	// Category
 	$routes->resource('category', ['filter' => 'permission:category-module']);
-	// Users
+	// User
 	$routes->resource('user', ['filter' => 'permission:user-module']);
-	// Roles
-	$routes->resource('role', ['filter' => 'permission:role-module']);
+	// Group
+	$routes->resource('group', ['filter' => 'permission:group-module']);
 });
 
 /*

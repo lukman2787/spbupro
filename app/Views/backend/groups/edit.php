@@ -22,7 +22,7 @@
 <div class="container-fluid mb-3 d-flex justify-content-end">
     <div class="row">
         <div class="col-12">
-            <a class="btn btn-sm bg-navy" href="<?= base_url('admin/role') ?>">Kembali <i class="fa fa-arrow-left"></i></a>
+            <a class="btn btn-sm bg-navy" href="<?= base_url('admin/group') ?>">Kembali <i class="fa fa-arrow-left"></i></a>
         </div>
     </div>
 </div>
@@ -35,14 +35,14 @@
                 <h3 class="card-title">Edit Role</h3>
             </div>
             <?php $validation = \Config\Services::validation(); ?>
-            <form action="<?= base_url('admin/role') ?>" method="POST">
+            <form action="<?= base_url('admin/group', $group->id) ?>" method="POST">
                 <?= csrf_field() ?>
                 <input type="hidden" name="_method" value="PUT">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="name">Nama Role</label>
+                                <label for="name">Nama Group</label>
                                 <input type="text" name="name" class="form-control form-control-sm  <?= $validation->hasError('name') ? 'is-invalid' : '' ?>" placeholder="Masukan nama role" value="<?= $group->name ?? old('name') ?>">
                                 <?php if ($validation->hasError('name')) : ?>
                                     <span class="invalid-feedback" role="alert">
@@ -64,7 +64,7 @@
                                 </div>
                                 <?php foreach ($permissions as $permission) : ?>
                                     <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="<?= $permission->name ?>" name="permission[]" type="checkbox" value="<?= $permission->id ?>" <?= $group->hasPermission($permission->name, $group->id) ? 'checked' : ''?>>
+                                        <input class="custom-control-input" id="<?= $permission->name ?>" name="permission[]" type="checkbox" value="<?= $permission->id ?>">
                                         <label for="<?= $permission->name ?>" class="custom-control-label"><?= $permission->name ?></label>
                                     </div>
                                 <?php endforeach ?>

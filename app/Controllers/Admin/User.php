@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Admin;
 
-use App\Entities\User as EntityUser;
+use Myth\Auth\Password;
 use App\Models\UserModel;
 use Myth\Auth\Models\GroupModel;
 use App\Controllers\BaseController;
@@ -44,14 +44,12 @@ class User extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-			// $validation = \Config\Services::validation();
-			// dd($validation);
             return redirect()->back()->withInput();
         }
 		
         $users->insert([
 			'username' => $this->request->getPost('username'),
-			'password_hash' => $this->request->getPost('password'),
+			'password_hash' => Password::hash($this->request->getPost('password')),
 			'email' => $this->request->getPost('email'),
 			'active' => 1,
 		]);
@@ -59,6 +57,42 @@ class User extends BaseController
 		$this->groups->addUserToGroup($users->getInsertId(), $this->request->getPost('group'));
 
         return redirect()->route('admin/user')->with('success', 'Berhasil menambahkan data!');
+    }
+
+	public function edit($id = null)
+	{
+		return view('backend/users/edit', [
+			'title' => 'Edit Pengguna',
+			'groups' => $this->groups->findAll(),
+			'user' => $this->users->find($id),
+		]);
+	}
+
+	public function update($id = null)
+	{
+        $user = $this->users->find($id);
+        // $rules = [
+        //     'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username,id,'.$user->id.']',
+        //     'email'    => 'required|valid_email|is_unique[users.email,id,]' . $user->id,
+        //     'group' => 'required',
+        // ];
+
+        if (!$this->validate([
+			'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username,id,'.$user->id.']',
+            'email'    => 'required|valid_email|is_unique[users.email,id,'.$user->id.']' . $user->id,
+            'group' => 'required',
+		])) {
+            return redirect()->back()->withInput();
+        }
+		
+        $this->users->update($id, [
+			'username' => $this->request->getPost('username'),
+			'email' => $this->request->getPost('email'),
+		]);
+
+		$this->groups->addUserToGroup($user->id, $this->request->getPost('group'));
+
+        return redirect()->route('admin/user')->with('success', 'Berhasil mengedit data!');
     }
 
 	public function delete($id = null)

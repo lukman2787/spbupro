@@ -12,7 +12,7 @@ class PermissionSeeder extends Seeder
 			'post-module',
 			'category-module',
 			'user-module',
-			'role-module',
+			'group-module',
 		];
 
 		foreach($data as $key => $value) {

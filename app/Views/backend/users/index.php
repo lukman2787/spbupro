@@ -65,7 +65,7 @@
                                         </a>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="javascript:void(0)" data-id="<?= $user->id ?>" id="showBook" class="btn btn-sm btn-primary">View</a>
-                                            <a class="dropdown-item" href="javascript:void(0)" data-id="" class="btn btn-primary btn-sm" id="editBook">Edit</a>
+                                            <a class="dropdown-item" href="<?= base_url('admin/user/'. $user->id .'/edit') ?>" class="btn btn-primary btn-sm">Edit</a>
                                             <form action="<?= base_url('admin/user/' . $user->id) ?>" method="POST">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">

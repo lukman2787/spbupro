@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Dashboard</h1>
+                <h1 class="m-0">Pengguna</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Role</a></li>
-                    <li class="breadcrumb-item active">Tambah Role</li>
+                    <li class="breadcrumb-item"><a href="#">Pengguna</a></li>
+                    <li class="breadcrumb-item active">Edit Pengguna</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -32,18 +32,18 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header bg-navy">
-                <h3 class="card-title">Tambah Role</h3>
+                <h3 class="card-title">Edit Pengguna</h3>
             </div>
-            <?= view('App\Views\Auth\_message_block') ?>
             <?php $validation = \Config\Services::validation(); ?>
-            <form action="<?= base_url('admin/user') ?>" method="POST">
+            <form action="<?= base_url('admin/user/', $user->id) ?>" method="POST">
                 <?= csrf_field() ?>
+                <input type="hidden" name="_method" value="PUT">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" class="form-control form-control-sm  <?= $validation->hasError('email') ? 'is-invalid' : '' ?>" placeholder="Masukan email" value="<?= old('email') ?>">
+                                <input type="text" name="email" class="form-control form-control-sm  <?= $validation->hasError('email') ? 'is-invalid' : '' ?>" placeholder="Masukan email" value="<?= $user->email ?? old('email') ?>">
                                 <?php if ($validation->hasError('email')) : ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?= $validation->getError('email') ?></strong>
@@ -52,44 +52,26 @@
                             </div>
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" name="username" class="form-control form-control-sm  <?= $validation->hasError('username') ? 'is-invalid' : '' ?>" placeholder="Masukan username" value="<?= old('username') ?>">
+                                <input type="text" name="username" class="form-control form-control-sm  <?= $validation->hasError('username') ? 'is-invalid' : '' ?>" placeholder="Masukan username" value="<?= $user->username ?? old('username') ?>">
                                 <?php if ($validation->hasError('username')) : ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?= $validation->getError('username') ?></strong>
                                     </span>
                                 <?php endif ?>
                             </div>
+                        </div>
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="group">Group</label>
                                 <select name="group" id="group" class="form-control form-control-sm <?= $validation->hasError('group') ? 'is-invalid' : '' ?>">
                                     <option selected disabled>--Pilih Group--</option>
                                     <?php foreach($groups as $group) : ?>
-                                        <option value="<?= $group->id ?>"><?= $group->name ?></option>
+                                        <option value="<?= $group->id ?>" <?= $group->id == $user->id ? 'selected' : ''?>><?= $group->name ?></option>
                                     <?php endforeach ; ?>
                                 </select>
                                 <?php if ($validation->hasError('group')) : ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?= $validation->getError('group') ?></strong>
-                                    </span>
-                                <?php endif ?>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" class="form-control form-control-sm  <?= $validation->hasError('password') ? 'is-invalid' : '' ?>" placeholder="Masukan password" value="<?= old('password') ?>">
-                                <?php if ($validation->hasError('password')) : ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?= $validation->getError('password') ?></strong>
-                                    </span>
-                                <?php endif ?>
-                            </div>
-                            <div class="form-group">
-                                <label for="pass_confirm">Konfirmasi Password</label>
-                                <input type="password" name="pass_confirm" class="form-control form-control-sm  <?= $validation->hasError('pass_confirm') ? 'is-invalid' : '' ?>" placeholder="Masukan pass_confirm" value="<?= old('pass_confirm') ?>">
-                                <?php if ($validation->hasError('pass_confirm')) : ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?= $validation->getError('pass_confirm') ?></strong>
                                     </span>
                                 <?php endif ?>
                             </div>

@@ -5,36 +5,36 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use Myth\Auth\Models\{GroupModel, PermissionModel};
 
-class Role extends BaseController
+class Group extends BaseController
 {
 	public function __construct()
     {
-        $this->roles = new GroupModel();
+        $this->groups = new GroupModel();
 		$this->permissions = new PermissionModel();
     }
 
 	public function index()
 	{
-		return view('backend/roles/index', [
-			'title' => 'Role',
-			'roles' => $this->roles->findAll(),           
+		return view('backend/groups/index', [
+			'title' => 'Group',
+			'groups' => $this->groups->findAll(),           
 		]);
 	}
 
 	public function new()
 	{
-		return view('backend/roles/new', [
-			'title' => 'Tambah Role',
+		return view('backend/groups/new', [
+			'title' => 'Tambah Group',
 			'permissions' => $this->permissions->findAll(),
 		]);
 	}
 
 	public function edit($id = null)
 	{
-		return view('backend/roles/edit', [
-			'title' => 'Edit Role',
+		return view('backend/groups/edit', [
+			'title' => 'Edit Group',
 			'permissions' => $this->permissions->findAll(),
-			'group' => $this->roles->find($id),
+			'group' => $this->groups->find($id),
 		]);
 	}
 
@@ -47,25 +47,25 @@ class Role extends BaseController
             return redirect()->back()->withInput();
         }
 
-		$this->roles->insert([
+		$this->groups->insert([
 			'name' => $this->request->getPost('name'),
 			'description' => $this->request->getPost('description'),
 		]);
 
 		$permissions = $this->request->getPost('permission');
 		if (count($permissions) > 0) {
-            foreach ($permissions as $index => $value) {
-				$this->roles->addPermissionToGroup($value[$index], $this->roles->getInsertId());
+            foreach ($permissions as $value) {
+				$this->groups->addPermissionToGroup($value, $this->groups->getInsertId());
             }
         }
 
-		return redirect()->to(site_url('admin/role'))->with('success', 'Data berhasil ditambah');
+		return redirect()->to(site_url('admin/group'))->with('success', 'Data berhasil ditambah');
 
 	}
 
 	public function delete($id = null)
 	{
-		$this->roles->delete($id);
-		return redirect()->to(site_url('admin/role'))->with('success', 'Data berhasil dihapus');
+		$this->groups->delete($id);
+		return redirect()->to(site_url('admin/group'))->with('success', 'Data berhasil dihapus');
 	}
 }

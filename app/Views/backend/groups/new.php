@@ -22,7 +22,7 @@
 <div class="container-fluid mb-3 d-flex justify-content-end">
     <div class="row">
         <div class="col-12">
-            <a class="btn btn-sm bg-navy" href="<?= base_url('admin/role') ?>">Kembali <i class="fa fa-arrow-left"></i></a>
+            <a class="btn btn-sm bg-navy" href="<?= base_url('admin/group') ?>">Kembali <i class="fa fa-arrow-left"></i></a>
         </div>
     </div>
 </div>
@@ -35,7 +35,7 @@
                 <h3 class="card-title">Tambah Role</h3>
             </div>
             <?php $validation = \Config\Services::validation(); ?>
-            <form action="<?= base_url('admin/role') ?>" method="POST">
+            <form action="<?= base_url('admin/group') ?>" method="POST">
                 <?= csrf_field() ?>
                 <div class="card-body">
                     <div class="row">
