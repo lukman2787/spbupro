@@ -31,10 +31,16 @@ class Group extends BaseController
 
 	public function edit($id = null)
 	{
+		$group = $this->groups;
+		$results = $group->getPermissionsForGroup($id);
+		// foreach($results as $result) {
+		// 	dd($result);
+		// }
 		return view('backend/groups/edit', [
 			'title' => 'Edit Group',
 			'permissions' => $this->permissions->findAll(),
 			'group' => $this->groups->find($id),
+			'groups' => $this->groups,
 		]);
 	}
 
@@ -60,7 +66,32 @@ class Group extends BaseController
         }
 
 		return redirect()->to(site_url('admin/group'))->with('success', 'Data berhasil ditambah');
+	}
 
+	public function update($id = null)
+	{
+		if (!$this->validate([
+            'name' => 'required',
+            'permission' => 'required',
+        ])) {
+            return redirect()->back()->withInput();
+        }
+
+		$group = $this->groups->find($id);
+		$this->groups->update($id, [
+			'name' => $this->request->getPost('name'),
+			'description' => $this->request->getPost('description'),
+		]);
+
+		$permissions = $this->request->getPost('permission');
+		if (count($permissions) > 0) {
+            foreach ($permissions as $value) {
+				$this->groups->removePermissionFromGroup($value, $group->id);
+				$this->groups->addPermissionToGroup($value, $group->id);
+            }
+        }
+
+		return redirect()->to(site_url('admin/group'))->with('success', 'Data berhasil diedit');
 	}
 
 	public function delete($id = null)

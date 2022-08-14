@@ -90,6 +90,7 @@ class User extends BaseController
 			'email' => $this->request->getPost('email'),
 		]);
 
+		$this->groups->removeUserFromAllGroups(intval($user->id));
 		$this->groups->addUserToGroup($user->id, $this->request->getPost('group'));
 
         return redirect()->route('admin/user')->with('success', 'Berhasil mengedit data!');

@@ -57,7 +57,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="customCheckbox1">Izin</label>
+                                <label for="customCheckbox1">Izin <small class="text-danger"><?=  $validation->hasError('permission') ? $validation->getError('permission') : '' ?></small></label>
                                 <div class="custom-control custom-checkbox">
                                     <input class="custom-control-input" id="check_all" type="checkbox" onClick="toggle(this)">
                                     <label for="check_all" class="custom-control-label">check semua</label>
