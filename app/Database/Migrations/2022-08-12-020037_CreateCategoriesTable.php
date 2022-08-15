@@ -15,13 +15,15 @@ class CreateCategoriesTable extends Migration
 				'auto_increment' => true,
 			],
 			'name' => [
-				'type'           => 'BIGINT',
-				'unsigned'       => true,
+				'type'           => 'VARCHAR',
+				'constraint'       => '255',
 			],
 			'slug' => [
 				'type' => 'VARCHAR',
 				'constraint' => '255',
 			],
+			'created_at'       => ['type' => 'datetime', 'null' => true],
+            'updated_at'       => ['type' => 'datetime', 'null' => true],
 		]);
 
 		$this->forge->addKey('id', true);

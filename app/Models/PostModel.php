@@ -14,11 +14,11 @@ class PostModel extends Model
 	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['title', 'meta_keyword', 'meta_description', 'user_id', 'body', 'image', 'slug'];
 
 	// Dates
 	protected $useTimestamps        = true;
-	protected $dateFormat           = 'timestamps';
+	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';
 	protected $deletedField         = 'deleted_at';
@@ -29,14 +29,13 @@ class PostModel extends Model
 	protected $skipValidation       = false;
 	protected $cleanValidationRules = true;
 
-	// Callbacks
-	protected $allowCallbacks       = true;
-	protected $beforeInsert         = [];
-	protected $afterInsert          = [];
-	protected $beforeUpdate         = [];
-	protected $afterUpdate          = [];
-	protected $beforeFind           = [];
-	protected $afterFind            = [];
-	protected $beforeDelete         = [];
-	protected $afterDelete          = [];
+	public function addCategoryToPost(int $categoryId, int $postId)
+    {
+        $data = [
+            'category_id'  => $categoryId,
+            'post_id' => $postId,
+        ];
+
+        return $this->db->table('category_post')->insert($data);
+    }
 }

@@ -14,11 +14,11 @@ class CategoryModel extends Model
 	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['name', 'slug'];
 
 	// Dates
 	protected $useTimestamps        = true;
-	protected $dateFormat           = 'timestamps';
+	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';
 	protected $deletedField         = 'deleted_at';
