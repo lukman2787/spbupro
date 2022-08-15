@@ -37,10 +37,10 @@ $routes->get('/', 'Home::index');
 //default admin controller
 $routes->get('administrator', 'Auth::login');
 // $routes->addRedirect('/', 'Admin/Dashboard::index');
+$routes->get('blog', 'Blog::index');
 
 //controller admin dashboard
 $routes->get('/admin/dashboard', 'Admin\DashboardController::index');
-
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static function ($routes) {
 	// Post

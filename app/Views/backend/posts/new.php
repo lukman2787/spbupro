@@ -121,6 +121,8 @@
 
 <script src="<?= base_url('backend') ?>/plugins/select2/js/select2.min.js"></script>
 <script src="<?= base_url('backend') ?>/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- CKEditor 5 -->
+<script src="<?= base_url('backend') ?>/plugins/ckeditor5/build/ckeditor.js"></script>
 <script>
 
     $(document).ready(function() {
@@ -128,11 +130,35 @@
             placeholder: "Pilih kategori",
             allowClear: true
         });
-        $('#body').summernote({
-            height: 300,                 // set editor height
-            minHeight: null,             // set minimum height of editor
-            maxHeight: null,             // set maximum height of editor
-            focus: true                  // set focus to editable area after initializing summernote
+        // $('#body').summernote({
+        //     placeholder: 'Tulis isi konten...',
+        //     height: 300,                 // set editor height
+        //     minHeight: null,             // set minimum height of editor
+        //     maxHeight: null,             // set maximum height of editor
+        //     focus: true                  // set focus to editable area after initializing summernote
+        // });
+        ClassicEditor
+        .create( document.querySelector('#body'), {
+            codeBlock: {
+                languages: [
+                    // Do not render the CSS class for the plain text code blocks.
+                    { language: 'plaintext', label: 'Plain text', class: '' },
+                    { language: 'html', label: 'HTML' },
+
+                    // Use the "php-code" class for PHP code blocks.
+                    { language: 'php', label: 'PHP', class: 'php-code' },
+
+                    // Use the "js" class for JavaScript code blocks.
+                    // Note that only the first ("js") class will determine the language of the block when loading data.
+                    { language: 'javascript', label: 'JavaScript', class: 'js javascript js-code' },
+
+                    // Python code blocks will have the default "language-python" CSS class.
+                    { language: 'python', label: 'Python' }
+                ]
+            }
+        })
+        .catch( error => {
+            console.error( error );
         });
     });
 
