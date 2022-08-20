@@ -71,4 +71,10 @@ class Post extends BaseController
 
 		return redirect()->to(site_url('admin/post'))->with('success', 'Data berhasil ditambah');
 	}
+
+	public function destroy($id = null)
+	{
+		$this->posts->delete($id);
+		return redirect()->to(site_url('admin/post'))->with('success', 'Data berhasil dihapus');
+	}
 }
