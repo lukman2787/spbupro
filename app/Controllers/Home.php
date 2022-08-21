@@ -6,7 +6,8 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		// return view('welcome_message');
-		return view('layouts/frontend');
+		return view('frontend/home', [
+			'title' => 'SPBU Pro Media',
+		]);
 	}
 }

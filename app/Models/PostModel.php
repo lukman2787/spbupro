@@ -38,4 +38,11 @@ class PostModel extends Model
 
         return $this->db->table('category_post')->insert($data);
     }
+
+	public function deleteAllCategoryFromPost(int $postId)
+	{
+		return $this->db->table('category_post')
+			->where('post_id', $postId)
+			->delete();
+	}
 }

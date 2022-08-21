@@ -40,7 +40,7 @@ $routes->get('administrator', 'Auth::login');
 $routes->get('blog', 'Blog::index');
 
 //controller admin dashboard
-$routes->get('/admin/dashboard', 'Admin\DashboardController::index');
+$routes->get('admin/dashboard', 'Admin\Dashboard::index');
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static function ($routes) {
 	// Post
