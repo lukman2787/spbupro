@@ -44,11 +44,11 @@
                         <div class="menu">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation"><a href="<?= base_url() ?>/frontend/index.html" class="active">Home</a></li>
-                                <li role="presentation"><a href="<?= base_url() ?>/frontend/about.html">About Us</a></li>
-                                <li role="presentation"><a href="<?= base_url() ?>/frontend/services.html">Services</a></li>
-                                <li role="presentation"><a href="<?= base_url() ?>/frontend/portfolio.html">Portfolio</a></li>
+                                <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/about.html">About Us</a></li> -->
+                                <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/services.html">Services</a></li> -->
+                                <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/portfolio.html">Portfolio</a></li> -->
                                 <li role="presentation"><a href="<?= base_url() ?>/frontend/blog.html">Blog</a></li>
-                                <li role="presentation"><a href="<?= base_url() ?>/frontend/contact.html">Contact</a></li>
+                                <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/contact.html">Contact</a></li> -->
                             </ul>
                         </div>
                     </div>

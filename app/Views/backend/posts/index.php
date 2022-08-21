@@ -9,8 +9,8 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard v1</li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('admin/dashboard') ?>">Home</a></li>
+                    <li class="breadcrumb-item active">Post</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -39,7 +39,6 @@
                         <tr>
                             <th width="3%">No</th>
                             <th>Judul</th>
-                            <th>Isi</th>
                             <th>Gambar</th>
                             <th style="text-align: center;" width="3%"><i class="fa fa-cogs"></i></th>
                         </tr>
@@ -52,7 +51,6 @@
                             <tr>
                                 <td class="text-center"><?= $i ?>.</td>
                                 <td><?= $post->title ?></td>
-                                <td><?= $post->body ?></td>
                                 <td><img src="<?= base_url('/uploads/post/' . $post->image) ?>" class="img-fluid" width="100px"></td>
                                 <td class="text-center">
                                     <div class="btn-group">

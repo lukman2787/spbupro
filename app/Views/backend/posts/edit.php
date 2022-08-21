@@ -11,7 +11,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Post</a></li>
-                    <li class="breadcrumb-item active">Tambah Post</li>
+                    <li class="breadcrumb-item active">Edit Post</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -32,7 +32,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header bg-navy">
-                <h3 class="card-title">Tambah Post</h3>
+                <h3 class="card-title">Edit Post</h3>
             </div>
             <?= view('App\Views\Auth\_message_block') ?>
             <?php $validation = \Config\Services::validation(); ?>
@@ -43,7 +43,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="title">Judul</label>
-                                <input type="text" name="title" class="form-control form-control-sm  <?= $validation->hasError('title') ? 'is-invalid' : '' ?>" placeholder="Masukan title" value="<?= old('title') ?>">
+                                <input type="text" name="title" class="form-control form-control-sm  <?= $validation->hasError('title') ? 'is-invalid' : '' ?>" placeholder="Masukan title" value="<?= $post->title ?? old('title') ?>">
                                 <?php if ($validation->hasError('title')) : ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?= $validation->getError('title') ?></strong>
@@ -68,7 +68,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="meta_keyword">Meta Keyword</label>
-                                <input type="text" name="meta_keyword" class="form-control form-control-sm <?= $validation->hasError('meta_keyword') ? 'is-invalid' : '' ?>" placeholder="Masukan meta_keyword" value="<?= old('meta_keyword') ?>">
+                                <input type="text" name="meta_keyword" class="form-control form-control-sm <?= $validation->hasError('meta_keyword') ? 'is-invalid' : '' ?>" placeholder="Masukan meta_keyword" value="<?= $post->meta_keyword ?? old('meta_keyword') ?>">
                                 <?php if ($validation->hasError('meta_keyword')) : ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?= $validation->getError('meta_keyword') ?></strong>
@@ -77,7 +77,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="meta_description">Meta Deskripsi</label>
-                                <input type="text" name="meta_description" class="form-control form-control-sm  <?= $validation->hasError('meta_description') ? 'is-invalid' : '' ?>" placeholder="Masukan meta_description" value="<?= old('meta_description') ?>">
+                                <input type="text" name="meta_description" class="form-control form-control-sm  <?= $validation->hasError('meta_description') ? 'is-invalid' : '' ?>" placeholder="Masukan meta_description" value="<?= $post->meta_description ?? old('meta_description') ?>">
                                 <?php if ($validation->hasError('meta_description')) : ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?= $validation->getError('meta_description') ?></strong>
@@ -98,7 +98,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="body">Isi</label>
-                            <textarea name="body" id="body" class="form-control"></textarea>
+                            <textarea name="body" id="body" class="form-control"><?= $post->body ?? old('body') ?></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-sm bg-navy float-right mt-3">Simpan</button>

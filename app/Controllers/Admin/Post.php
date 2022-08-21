@@ -72,6 +72,15 @@ class Post extends BaseController
 		return redirect()->to(site_url('admin/post'))->with('success', 'Data berhasil ditambah');
 	}
 
+	public function edit($id = null)
+	{
+		return view('backend/posts/edit', [
+			'title' => 'Tambah Postingan',
+			'categories' => $this->categories->findAll(),
+			'post' => $this->posts->find($id),
+		]);	
+	}
+
 	public function update($id = null)
 	{
 		if (!$this->validate([
