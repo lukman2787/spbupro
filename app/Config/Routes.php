@@ -41,6 +41,8 @@ $routes->get('blog', 'Blog::index');
 
 //controller admin dashboard
 $routes->get('admin/dashboard', 'Admin\Dashboard::index');
+$routes->get('admin/profile/edit', 'Admin\Dashboard::editProfile');
+$routes->put('admin/profile/(:any)', 'Admin\Dashboard::updateProfile');
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static function ($routes) {
 	// Post

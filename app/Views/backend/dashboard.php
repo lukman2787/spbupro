@@ -595,6 +595,39 @@
             <!-- right col -->
         </div>
         <!-- /.row (main row) -->
+
+        <!-- Main row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle" width="20%" src="<?= base_url('/uploads/profile/' .  $profile->logo) ?>" alt="Logo profile picture">
+                        </div>
+
+                        <h3 class="profile-username text-center"><?= $profile->app_name ?></h3>
+
+                        <p class="text-muted text-center"><?= $profile->description ?></p>
+
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <b>Background Image</b> <a class="float-right"><img src="<?= base_url('/uploads/profile/' .  $profile->background_image) ?>" alt="Background image" width="20%" class="img-fluid"></a>
+                            </li>
+                            <!-- <li class="list-group-item">
+                                <b>Following</b> <a class="float-right">543</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Friends</b> <a class="float-right">13,287</a>
+                            </li> -->
+                        </ul>
+
+                        <a href="<?= base_url('admin/profile/edit') ?>" class="btn btn-sm btn-primary">Edit Profile</a>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+        <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
 </section>
 
