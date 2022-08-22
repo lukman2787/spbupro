@@ -47,15 +47,23 @@ class User extends BaseController
             return redirect()->back()->withInput();
         }
 		
-        $users->insert([
-			'username' => $this->request->getPost('username'),
-			'password_hash' => Password::hash($this->request->getPost('password')),
-			'email' => $this->request->getPost('email'),
-			'active' => 1,
-		]);
+		$users->db->transBegin();
+		try {
 
-		$this->groups->addUserToGroup($users->getInsertId(), $this->request->getPost('group'));
+			$users->insert([
+				'username' => $this->request->getPost('username'),
+				'password_hash' => Password::hash($this->request->getPost('password')),
+				'email' => $this->request->getPost('email'),
+				'active' => 1,
+			]);
+			
+			$this->groups->addUserToGroup($users->getInsertId(), $this->request->getPost('group'));
 
+			$users->db->transCommit();
+		} catch (\Exception $e) {
+			$users->db->transRollback();
+		}
+			
         return redirect()->route('admin/user')->with('success', 'Berhasil menambahkan data!');
     }
 
@@ -64,6 +72,7 @@ class User extends BaseController
 		return view('backend/users/edit', [
 			'title' => 'Edit Pengguna',
 			'groups' => $this->groups->findAll(),
+			'userGroup' => $this->groups->getGroupsForUser($id),
 			'user' => $this->users->find($id),
 		]);
 	}

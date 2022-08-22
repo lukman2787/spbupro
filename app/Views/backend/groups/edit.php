@@ -64,7 +64,7 @@
                                 </div>
                                 <?php foreach ($permissions as $permission) : ?>
                                     <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="<?= $permission->name ?>" name="permission[]" type="checkbox" value="<?= $permission->id ?>" <?= $permissionForGroup->id == $permission->id ? 'checked' : '' ?>>
+                                        <input class="custom-control-input" id="<?= $permission->name ?>" name="permission[]" type="checkbox" value="<?= $permission->id ?>" <?= $group->hasPermission($permission->name) ? 'checked' : '' ?>>
                                         <label for="<?= $permission->name ?>" class="custom-control-label"><?= $permission->name ?></label>
                                     </div>
                                 <?php endforeach ?>

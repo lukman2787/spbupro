@@ -31,14 +31,12 @@ class Group extends BaseController
 
 	public function edit($id = null)
 	{
-		$group = $this->groups->find($id);
-		$groups = new GroupModel();
-		// dd($groups->getPermissionsForGroup($group->id));
+		// foreach ($this->groups->getPermissionsForGroup($id) as $permission) {}
 		return view('backend/groups/edit', [
 			'title' => 'Edit Group',
-			'permissions' => $groups->getPermissionsForGroup($group->id),
+			'permissions' => $this->permissions->findAll(),
 			'group' => $this->groups->find($id),
-			'permissionForGroup' => $this->groups->getPermissionsForGroup($id),
+			'permissionGroup' => $this->groups->getPermissionsForGroup($id),
 		]);
 	}
 

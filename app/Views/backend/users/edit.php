@@ -65,8 +65,8 @@
                                 <label for="group">Group</label>
                                 <select name="group" id="group" class="form-control form-control-sm <?= $validation->hasError('group') ? 'is-invalid' : '' ?>">
                                     <option selected disabled>--Pilih Group--</option>
-                                    <?php foreach($groups as $group) : ?>
-                                        <option value="<?= $group->id ?>" <?= $group->id == $user->id ? 'selected' : ''?>><?= $group->name ?></option>
+                                    <?php foreach($groups as $value) : ?>
+                                        <option value="<?= $value->id ?>" <?= $value->id == $userGroup[0]['group_id'] ? 'selected' : '' ?>><?= $value->name ?></option>
                                     <?php endforeach ; ?>
                                 </select>
                                 <?php if ($validation->hasError('group')) : ?>
