@@ -28,7 +28,6 @@ class Blog extends BaseController
 
 	public function show($slug = null)
 	{
-		// dd($this->posts->where('slug', $slug)->first());
 		return view('frontend/blogs/show', [
 			'title' => 'Blog Details',
 			'post' => $this->posts->where('slug', $slug)->first(),

@@ -38,7 +38,7 @@ $routes->get('/', 'Home::index');
 $routes->get('administrator', 'Auth::login');
 // $routes->addRedirect('/', 'Admin/Dashboard::index');
 $routes->get('blog', 'Blog::index');
-$routes->get('blog/(:segment)', 'Blog::show/$1');
+$routes->get('(:segment)', 'Blog::show/$1');
 
 //controller admin dashboard
 $routes->get('admin/dashboard', 'Admin\Dashboard::index');
