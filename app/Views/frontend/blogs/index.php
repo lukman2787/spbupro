@@ -19,16 +19,9 @@
                 <div class="blog-item">
                     <div class="row">
                         <div class="col-xs-12 col-sm-10 blog-content">
-                            <div class="panel">
-                                <div class="panel-header">
-                                    <h3 class="panel-title">Haha</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <a href="#"><img class="img-responsive img-blog img-fluid rounded" src="<?= base_url('/uploads/post/' . $post->image) ?? base_url('/uploads/profile/' . $profile->background_image) ?>"/></a>
-                                    <h4><?= $post->title ?></h4>
-                                    <a class="btn btn-primary readmore">Read More <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
+                            <a href="#"><img class="img-responsive img-fluid rounded" style="width: 100%; height: 270px; object-fit: cover; object-position: center" src="<?= base_url('/uploads/post/' . $post->image) ?? base_url('/uploads/profile/' . $profile->background_image) ?>"/></a>
+                            <h4><?= $post->title ?></h4>
+                            <a href="<?= base_url('blog/' . $post->slug) ?>" class="btn btn-primary">Baca selengkapnya <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -36,13 +29,14 @@
                 <?php endforeach ?>
 
                 <ul class="pagination pagination-lg">
-                    <li><a href="#"><i class="fa fa-long-arrow-left"></i>Previous Page</a></li>
+                    <!-- <li><a href="#"><i class="fa fa-long-arrow-left"></i>Previous Page</a></li>
                     <li class="active"><a href="#">1</a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>
-                    <li><a href="#">Next Page<i class="fa fa-long-arrow-right"></i></a></li>
+                    <li><a href="#">Next Page<i class="fa fa-long-arrow-right"></i></a></li> -->
+                    <?= $pager->links() ?>
                 </ul>
                 <!--/.pagination-->
             </div>
@@ -50,8 +44,8 @@
 
             <aside class="col-md-4">
                 <div class="widget search">
-                    <form role="form">
-                        <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+                    <form role="form" action="<?= base_url('blog') ?>">
+                        <input type="text" name="search_query" class="form-control search_box" placeholder="Search Here">
                     </form>
                 </div>
                 <!--/.search-->
@@ -153,4 +147,20 @@
 </section>
 <!--/#blog-->
 
+<?= $this->endSection() ?>
+
+<?= $this->section('custom-styles') ?>
+<style>
+    .img {
+        width: 100%;
+        max-width: inherit;
+        position: absolute;
+        top: 50%;
+        /* left: 50%;
+        -webkit-transform: translate(-50%, -50%) scale(1.5);
+        -moz-transform: translate(-50%, -50%) scale(1.5);
+        -o-transform: translate(-50%, -50%) scale(1.5);
+        transform: translate(-50%, -50%) scale(1.5); */
+    }
+</style>
 <?= $this->endSection() ?>

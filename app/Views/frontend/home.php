@@ -5,7 +5,7 @@
 <section id="main-slider" class="no-margin">
     <div class="carousel slide">
         <div class="carousel-inner">
-            <div class="item active" style="background-image: url()">
+            <div class="item active" style="background-image: url(/uploads/profile/<?= $profile->background_image ?>)">
                 <div class="container">
                     <div class="row slide-margin">
                         <div class="col-sm-6">
@@ -94,31 +94,15 @@
 <div class="lates">
     <div class="container">
         <div class="text-center">
-            <h2>Lates News</h2>
+            <h2>Latest Blog</h2>
         </div>
-        <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <img src="images/4.jpg" class="img-responsive" />
-            <h3>Template built with Twitter Bootstrap</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero,
-                pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
-            </p>
-        </div>
-
-        <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-            <img src="images/4.jpg" class="img-responsive" />
-            <h3>Template built with Twitter Bootstrap</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero,
-                pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
-            </p>
-        </div>
-
-        <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
-            <img src="images/4.jpg" class="img-responsive" />
-            <h3>Template built with Twitter Bootstrap</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero,
-                pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
-            </p>
-        </div>
+        <?php foreach($posts as $post) : ?>
+            <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <img style="width: 100%; height: 200px; object-fit: cover; object-position: center" src="<?= base_url('/uploads/post/' . $post->image) ?>" class="img-responsive" />
+                <h3><?= $post->title ?></h3>
+                <?= $post->body ?>
+            </div>
+        <?php endforeach ?>
     </div>
 </div>
 <!-- 
@@ -153,7 +137,7 @@
                     </div>
                     <div class="media-body">
                         <h2>Have a question or need a custom quote?</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation +0123 456 70 80</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation <a href="https://wa.me/082117088123">+6282117088123</a></p>
                     </div>
                 </div>
             </div>

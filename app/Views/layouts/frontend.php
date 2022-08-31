@@ -19,6 +19,8 @@
     Author: BootstrapMade
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+
+    <?= $this->renderSection('custom-styles') ?>
 </head>
 
 <body>
@@ -35,7 +37,10 @@
                         </button>
                         <div class="navbar-brand">
                             <a href="<?= base_url() ?>/frontend/index.html">
-                                <h1><span>SPBUpro</span>Media</h1>
+                                <h1><span><?php
+                                $profile = new App\Models\ProfileModel();
+                                echo $profile->first()->app_name;
+                                ?></span></h1>
                             </a>
                         </div>
                     </div>
@@ -43,11 +48,12 @@
                     <div class="navbar-collapse collapse">
                         <div class="menu">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation"><a href="<?= base_url() ?>/frontend/index.html" class="active">Home</a></li>
+                                <?php $uri = current_url(true);?>
+                                <li role="presentation"><a href="<?= base_url() ?>" class="<?= $uri->getSegment(1) === '' ? 'active' : '' ?>">Home</a></li>
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/about.html">About Us</a></li> -->
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/services.html">Services</a></li> -->
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/portfolio.html">Portfolio</a></li> -->
-                                <li role="presentation"><a href="<?= base_url() ?>/frontend/blog.html">Blog</a></li>
+                                <li role="presentation"><a href="<?= base_url('blog') ?>" class="<?= $uri->getSegment(1) === 'blog' ? 'active' : '' ?>">Blog</a></li>
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/contact.html">Contact</a></li> -->
                             </ul>
                         </div>

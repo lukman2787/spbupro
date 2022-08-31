@@ -16,11 +16,22 @@ class Blog extends BaseController
 
 	public function index()
 	{
+		$query = $this->request->getGet('search_query');
 		return view('frontend/blogs/index', [
 			'title' => 'Blog',
-			'posts' => $this->posts->findAll(),
+			'posts' => $this->posts->like('title', "%$query%")->paginate(5),
+			'pager' => $this->posts->pager,
 			'categories' => $this->categories->findAll(),
 			'profile' => $this->profiles->find(1),
+		]);
+	}
+
+	public function show($slug = null)
+	{
+		// dd($this->posts->where('slug', $slug)->first());
+		return view('frontend/blogs/show', [
+			'title' => 'Blog Details',
+			'post' => $this->posts->where('slug', $slug)->first(),
 		]);
 	}
 }
