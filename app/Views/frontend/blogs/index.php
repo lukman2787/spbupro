@@ -18,20 +18,17 @@
                 <?php foreach($posts as $post) : ?>
                 <div class="blog-item">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-2">
-                            <div class="entry-meta">
-                                <span id="publish_date"><?= $post->created_at ?></span>
-                                <span><i class="fa fa-user"></i> <a href="#"><?= $post->user_id ?></a></span>
-                                <span><i class="fa fa-comment"></i> <a href="#">2 Comments</a></span>
-                                <span><i class="fa fa-heart"></i><a href="#">56 Likes</a></span>
-                            </div>
-                        </div>
-
                         <div class="col-xs-12 col-sm-10 blog-content">
-                            <a href="#"><img class="img-responsive img-blog" src="images/blog/blog1.jpg" width="100%" alt="" /></a>
-                            <h4><?= $post->title ?></h4>
-                            <?= $post->body ?>
-                            <a class="btn btn-primary readmore">Read More <i class="fa fa-angle-right"></i></a>
+                            <div class="panel">
+                                <div class="panel-header">
+                                    <h3 class="panel-title">Haha</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <a href="#"><img class="img-responsive img-blog img-fluid rounded" src="<?= base_url('/uploads/post/' . $post->image) ?? base_url('/uploads/profile/' . $profile->background_image) ?>"/></a>
+                                    <h4><?= $post->title ?></h4>
+                                    <a class="btn btn-primary readmore">Read More <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,7 +56,7 @@
                 </div>
                 <!--/.search-->
 
-                <div class="widget categories">
+                <!-- <div class="widget categories">
                     <h3>Recent Comments</h3>
                     <div class="row">
                         <div class="col-sm-12">
@@ -87,7 +84,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!--/.recent comments-->
 
 
@@ -96,17 +93,16 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <ul class="blog_category">
-                                <li><a href="#">Computers <span class="badge">04</span></a></li>
-                                <li><a href="#">Smartphone <span class="badge">10</span></a></li>
-                                <li><a href="#">Gedgets <span class="badge">06</span></a></li>
-                                <li><a href="#">Technology <span class="badge">25</span></a></li>
+                                <?php foreach($categories as $category) : ?>
+                                    <li><a href="#"><?= $category->name ?> <span class="badge">04</span></a></li>
+                                <?php endforeach ?>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!--/.categories-->
 
-                <div class="widget archieve">
+                <!-- <div class="widget archieve">
                     <h3>Archieve</h3>
                     <div class="row">
                         <div class="col-sm-12">
@@ -118,10 +114,10 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!--/.archieve-->
 
-                <div class="widget tags">
+                <!-- <div class="widget tags">
                     <h3>Tag Cloud</h3>
                     <ul class="tag-cloud">
                         <li><a class="btn btn-xs btn-primary" href="#">Apple</a></li>
@@ -135,10 +131,10 @@
                         <li><a class="btn btn-xs btn-primary" href="#">Porche</a></li>
                         <li><a class="btn btn-xs btn-primary" href="#">Gadgets</a></li>
                     </ul>
-                </div>
+                </div> -->
                 <!--/.tags-->
 
-                <div class="widget blog_gallery">
+                <!-- <div class="widget blog_gallery">
                     <h3>Our Gallery</h3>
                     <ul class="sidebar-gallery">
                         <li><a href="#"><img src="images/blog/gallery1.png" alt="" /></a></li>
@@ -148,7 +144,7 @@
                         <li><a href="#"><img src="images/blog/gallery5.png" alt="" /></a></li>
                         <li><a href="#"><img src="images/blog/gallery6.png" alt="" /></a></li>
                     </ul>
-                </div>
+                </div> -->
                 <!--/.blog_gallery-->
             </aside>
         </div>
