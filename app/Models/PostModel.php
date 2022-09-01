@@ -53,4 +53,13 @@ class PostModel extends Model
 			->where('post_id', $postId)
 			->delete();
 	}
+
+	public function getPostWithUser($slug)
+	{
+		return $this->db->table('posts')
+			->where('slug', $slug)
+			->join('users', 'users.id = posts.user_id')
+			->get()
+			->getFirstRow();
+	}
 }

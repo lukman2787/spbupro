@@ -15,15 +15,23 @@
     <div class="blog">
         <div class="row">
             <div class="col-md-8">
-      <h3><?= $post->title ?></h3>
-      <hr>
-      <div class="wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible;-webkit-animation-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 300ms; -moz-animation-delay: 300ms; animation-delay: 300ms;">
-        <img src="<?= base_url('/uploads/post/' . $post->image) ?>" class="img-responsive">
-        <h4><?= esc($post->title) ?></h4>
-        <?= $post->body ?>
-      </div>
+                <h3><?= $post->title ?></h3>
+                <p>
+                    <?= $post->created_at ?> |
+                    <?php foreach($categories as $category) {
+                        echo $category->name . ' ';
+                    } ?>
+                    | <?= $post->username ?>
+                </p>
+                <hr>
+                <div class="wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible;-webkit-animation-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 300ms; -moz-animation-delay: 300ms; animation-delay: 300ms;">
+                    <img src="<?= base_url('/uploads/post/' . $post->image) ?>" class="img-responsive" style="width: 100%; height: 400px; object-fit: cover; object-position: center;">
+                    <!-- <h4><?= esc($post->title) ?></h4> -->
+                    <div style="margin-bottom: 30px; margin-top: 30px">
+                        <?= $post->body ?>
+                    </div>
+                </div>
       <!-- <div class="col-md-5 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible;-webkit-animation-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 600ms; -moz-animation-delay: 600ms; animation-delay: 600ms;"> -->
-               
             </div>
             <!--/.col-md-8-->
 

@@ -32,12 +32,12 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-$routes->get('blog', 'Blog::index');
-// $routes->get('(:segment)', 'Blog::show/$1');
 $routes->get('/', 'Home::index');
+$routes->get('blog', 'Blog::index');
+$routes->get('blog/(:segment)', 'Blog::show/$1');
 
 $routes->group('', ['filter' => 'login'], function($routes){
-		//controller admin dashboard
+	//controller admin dashboard
 	$routes->get('admin/dashboard', 'Admin\Dashboard::index');
 	$routes->get('admin/profile/edit', 'Admin\Dashboard::editProfile');
 	$routes->put('admin/profile/(:any)', 'Admin\Dashboard::updateProfile');

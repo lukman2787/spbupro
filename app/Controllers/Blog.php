@@ -34,7 +34,8 @@ class Blog extends BaseController
 
 		return view('frontend/blogs/show', [
 			'title' => 'Blog Details',
-			'post' => $this->posts->where('slug', $slug)->first(),
+			'post' => $this->posts->getPostWithUser($slug),
+			'categories' => $this->categories->findAll(),
 		]);
 	}
 }
