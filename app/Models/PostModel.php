@@ -29,6 +29,14 @@ class PostModel extends Model
 	protected $skipValidation       = false;
 	protected $cleanValidationRules = true;
 
+	public function getPostWithCategory(int $postId)
+	{
+		return $this->db->table('categories')
+				->join('category_post', 'category_post.post_id = categories.id')
+				->where('post_id', $postId)
+				->get()->getResultArray();
+	}
+
 	public function addCategoryToPost(int $categoryId, int $postId)
     {
         $data = [

@@ -74,6 +74,7 @@ class Post extends BaseController
 
 	public function edit($id = null)
 	{
+		dd($this->posts->getPostWithCategory($id));
 		return view('backend/posts/edit', [
 			'title' => 'Tambah Postingan',
 			'categories' => $this->categories->findAll(),

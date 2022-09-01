@@ -28,6 +28,10 @@ class Blog extends BaseController
 
 	public function show($slug = null)
 	{
+		if ($slug == false) {
+			throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: ' . $slug);
+		}
+
 		return view('frontend/blogs/show', [
 			'title' => 'Blog Details',
 			'post' => $this->posts->where('slug', $slug)->first(),

@@ -19,7 +19,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
-$routes->setTranslateURIDashes(false);
+$routes->setTranslateURIDashes(true);
 $routes->set404Override();
 $routes->setAutoRoute(false);
 
@@ -29,21 +29,19 @@ $routes->setAutoRoute(false);
  * --------------------------------------------------------------------
  */
 
-
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+$routes->get('blog', 'Blog::index');
+// $routes->get('(:segment)', 'Blog::show/$1');
 $routes->get('/', 'Home::index');
 
-//default admin controller
-$routes->get('administrator', 'Auth::login');
-// $routes->addRedirect('/', 'Admin/Dashboard::index');
-$routes->get('blog', 'Blog::index');
-$routes->get('(:segment)', 'Blog::show/$1');
-
-//controller admin dashboard
-$routes->get('admin/dashboard', 'Admin\Dashboard::index');
-$routes->get('admin/profile/edit', 'Admin\Dashboard::editProfile');
-$routes->put('admin/profile/(:any)', 'Admin\Dashboard::updateProfile');
+$routes->group('', ['filter' => 'login'], function($routes){
+		//controller admin dashboard
+	$routes->get('admin/dashboard', 'Admin\Dashboard::index');
+	$routes->get('admin/profile/edit', 'Admin\Dashboard::editProfile');
+	$routes->put('admin/profile/(:any)', 'Admin\Dashboard::updateProfile');
+});
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static function ($routes) {
 	// Post

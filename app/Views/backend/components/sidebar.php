@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <?php endif ?>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
@@ -85,7 +85,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <?php if (has_permission('user-module') || has_permission('group-module') ) : ?>
                 <li class="nav-item">
                     <a href="#" class="nav-link <?= $uri->getSegment(2) === 'user' || $uri->getSegment(2) === 'group'  ? 'active' : '' ?>">
