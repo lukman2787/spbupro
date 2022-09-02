@@ -59,5 +59,6 @@ class BaseController extends Controller
 		$this->nama = 'Lukman Hakim';
 		// contoh pemanggilan model di semua controller
 		// $this->komikModel = new \App\Models\KomikModel();
+		helper('auth');
 	}
 }

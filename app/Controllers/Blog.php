@@ -19,7 +19,7 @@ class Blog extends BaseController
 		$query = $this->request->getGet('search_query');
 		return view('frontend/blogs/index', [
 			'title' => 'Blog',
-			'posts' => $this->posts->like('title', "%$query%")->paginate(5),
+			'posts' => $this->posts->like('title', "%$query%")->orderBy('created_at', 'desc')->paginate(5),
 			'pager' => $this->posts->pager,
 			'categories' => $this->categories->findAll(),
 			'profile' => $this->profiles->find(1),

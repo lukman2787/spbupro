@@ -17,7 +17,7 @@ class Post extends BaseController
 	{
 		return view('backend/posts/index', [
 			'title' => 'List Postingan',
-			'posts' => $this->posts->findAll()
+			'posts' => $this->posts->orderBy('created_at', 'desc')->findAll(),
 		]);
 	}
 
@@ -74,11 +74,17 @@ class Post extends BaseController
 
 	public function edit($id = null)
 	{
-		dd($this->posts->getPostWithCategories($id));
+		foreach ($this->categories->getPostCategory($id) as $value) {
+			$categoryPost[$value->category_id] = $value->name;
+		}
+		// dd($this->categories->getPostCategory($id));
+		// dd($categoryPost);
 		return view('backend/posts/edit', [
 			'title' => 'Tambah Postingan',
 			'categories' => $this->categories->findAll(),
 			'post' => $this->posts->find($id),
+			'categoryPost' => $this->categories->getPostCategory($id),
+			'categoryPost' => $categoryPost,
 		]);	
 	}
 
@@ -97,29 +103,37 @@ class Post extends BaseController
             return redirect()->back()->withInput();
         }
 
+		$post = $this->posts->find($id);
+
 		$file = $this->request->getFile('image');
         if ($file->getError() == 4) {
-            $image = null;
+            $image = $post->image;
         } else {
             $image = $file->getRandomName();
+			if ($post->image) {
+				unlink('uploads/post/' . $post->image);
+			}
             $file->move('uploads/post', $image);
         }
 		
-		$this->posts->update($id, [
-			'title' => $this->request->getPost('title'),
-			'slug' => url_title($this->request->getPost('title'), '-', true),
-			'body' => $this->request->getPost('body'),
-			'meta_keyword' => $this->request->getPost('meta_keyword'),
-			'meta_description' => $this->request->getPost('meta_description'),
-			'image' => $image,
-		]);
+		$this->db->transStart();
+			$this->posts->update($id, [
+				'title' => $this->request->getPost('title'),
+				'slug' => url_title($this->request->getPost('title'), '-', true),
+				'body' => $this->request->getPost('body'),
+				'meta_keyword' => $this->request->getPost('meta_keyword'),
+				'meta_description' => $this->request->getPost('meta_description'),
+				'image' => $image,
+			]);
 
-		$categories = $this->request->getPost('category');
-		if (count($categories) > 0) {
-			foreach($categories as $category) {
-				$this->posts->addCategoryToPost($category, $this->posts->getInsertId());
+			$categories = $this->request->getPost('category');
+			$this->categories->deleteCategoriesFormPost($post->id);
+			if (count($categories) > 0) {
+				foreach($categories as $category) {
+					$this->posts->addCategoryToPost($category, $post->id);
+				}
 			}
-		}
+		$this->db->transComplete();
 
 		return redirect()->to(site_url('admin/post'))->with('success', 'Data berhasil ditambah');
 	}

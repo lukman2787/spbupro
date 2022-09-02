@@ -54,6 +54,9 @@
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/services.html">Services</a></li> -->
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/portfolio.html">Portfolio</a></li> -->
                                 <li role="presentation"><a href="<?= base_url('blog') ?>" class="<?= $uri->getSegment(1) === 'blog' ? 'active' : '' ?>">Blog</a></li>
+                                <?php if (logged_in()) : ?>
+                                    <li role="presentation"><a href="<?= base_url('admin/dashboard') ?>" class="<?= $uri->getSegment(1) === 'admin' ? 'active' : '' ?>">Dashboard</a></li>
+                                <?php endif ?>
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/contact.html">Contact</a></li> -->
                             </ul>
                         </div>

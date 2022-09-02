@@ -36,8 +36,9 @@
             </div>
             <?= view('App\Views\Auth\_message_block') ?>
             <?php $validation = \Config\Services::validation(); ?>
-            <form action="<?= base_url('admin/post') ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?= base_url('admin/post/' . $post->id) ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field() ?>
+                <input type="hidden" name="_method" value="PUT">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
@@ -53,10 +54,10 @@
                             <div class="form-group">
                                 <label for="category">Kategori</label>
                                 <select name="category[]" id="category" class="form-control form-control-sm <?= $validation->hasError('category') ? 'is-invalid' : '' ?>" multiple>
-                                <option></option>
+                                    <option></option>
                                     <?php foreach($categories as $category) : ?>
-                                        <option value="<?= $category->id ?>"><?= $category->name ?></option>
-                                    <?php endforeach ; ?>
+                                        <option value="<?= $category->id ?>" <?= $category->name == isset($categoryPost[$category->id]) ? 'selected' : '' ?>><?= $category->name ?></option>
+                                    <?php endforeach ?>
                                 </select>
                                 <?php if ($validation->hasError('category')) : ?>
                                     <span class="invalid-feedback" role="alert">

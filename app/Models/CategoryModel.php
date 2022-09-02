@@ -39,4 +39,19 @@ class CategoryModel extends Model
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];
+
+	public function deleteCategoriesFormPost(int $postId)
+	{
+		return $this->db->table('category_post')
+			->where('post_id', $postId)
+			->delete();
+	}
+
+	public function getPostCategory(int $postId)
+	{
+		return $this->db->table('categories')
+            ->join('category_post', 'category_post.category_id = categories.id')
+            ->where('post_id', $postId)
+            ->get()->getResultObject();
+	}
 }
