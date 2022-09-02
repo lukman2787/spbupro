@@ -100,7 +100,7 @@
             <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
                 <img style="width: 100%; height: 200px; object-fit: cover; object-position: center" src="<?= base_url('/uploads/post/' . $post->image) ?>" class="img-responsive" />
                 <h3><a href="<?= base_url('blog/' . $post->slug) ?>"><?= $post->title ?></a></h3>
-                <?= substr_replace($post->body, "...", 200) ?>
+                <?= substr_replace($post->body, "... Baca selengkapnya", 200) ?>
             </div>
         <?php endforeach ?>
     </div>
