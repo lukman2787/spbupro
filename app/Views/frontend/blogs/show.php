@@ -5,7 +5,7 @@
 <div id="breadcrumb">
     <div class="container">
         <div class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="<?= base_url() ?>">Home</a></li>
             <li>Blog</li>
         </div>
     </div>
@@ -21,7 +21,10 @@
                     <?php foreach($categories as $category) {
                         echo $category->name . ' ';
                     } ?>
-                    | <?= $post->username ?>
+                    | <?= $post->username ?> |
+                    Bagikan :
+                    <a href="whatsapp://send?text=<?= base_url('blog/' . $post->slug) ?>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Bagikan dong ke whatsapp kamu"><i class="fa fa-whatsapp"></i></a>
+                    <a href="" class="btn btn-sm btn-success"><i class="fa fa-facebook"></i></a>
                 </p>
                 <hr>
                 <div class="wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible;-webkit-animation-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 300ms; -moz-animation-delay: 300ms; animation-delay: 300ms;">

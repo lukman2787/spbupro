@@ -1,8 +1,9 @@
 <aside class="main-sidebar sidebar-dark-navy elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="<?= base_url() ?>/backend/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <?php $profile = new App\Models\ProfileModel(); ?>
+    <a href="<?= base_url() ?>" class="brand-link">
+        <img src="<?= base_url('uploads/profile/' . $profile->first()->logo) ?>" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light"><?php echo $profile->first()->app_name ?? 'ADMIN LTE 3'?></span>
     </a>
 
     <!-- Sidebar -->
@@ -34,7 +35,7 @@
                 <?php if (has_permission('post-module')) : ?>
                 <li class="nav-item">
                     <a href="<?= site_url('admin/post') ?>" class="nav-link <?= $uri->getSegment(2) === 'post' ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Postingan
                         </p>
@@ -89,7 +90,7 @@
                 <?php if (has_permission('user-module') || has_permission('group-module') ) : ?>
                 <li class="nav-item">
                     <a href="#" class="nav-link <?= $uri->getSegment(2) === 'user' || $uri->getSegment(2) === 'group'  ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-tasks"></i>
                         <p>
                             Managemen Pengguna
                             <i class="right fas fa-angle-left"></i>
@@ -99,7 +100,7 @@
                         <?php if (has_permission('user-module')) : ?>
                         <li class="nav-item">
                             <a href="<?= base_url('admin/user') ?>" class="nav-link <?= $uri->getSegment(2) === 'user' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-users nav-icon"></i>
                                 <p>Pengguna</p>
                             </a>
                         </li>
@@ -107,7 +108,7 @@
                         <?php if (has_permission('user-module')) : ?>
                         <li class="nav-item">
                             <a href="<?= base_url('admin/group') ?>" class="nav-link <?= $uri->getSegment(2) === 'group' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-layer-group nav-icon"></i>
                                 <p>Group</p>
                             </a>
                         </li>
@@ -117,8 +118,8 @@
                 <?php endif ?>
                 <li class="nav-item">
                     <a href="<?= site_url('logout') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
+                        <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
+                        <p class="text-danger">
                             Logout
                         </p>
                     </a>

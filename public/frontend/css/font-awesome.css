@@ -1002,6 +1002,7 @@
 .fa-crop:before {
   content: "\f125";
 }
+.fa-whatsapp:before{content:"\f232"}
 .fa-code-fork:before {
   content: "\f126";
 }

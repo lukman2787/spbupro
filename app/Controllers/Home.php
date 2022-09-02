@@ -18,7 +18,7 @@ class Home extends BaseController
 		return view('frontend/home', [
 			'title' => 'SPBU Pro Media',
 			'profile' => $this->profiles->find(1),
-			'posts' => $this->posts->paginate(3),
+			'posts' => $this->posts->findAll(3),
 		]);
 	}
 }

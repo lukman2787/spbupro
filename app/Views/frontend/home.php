@@ -10,9 +10,9 @@
                     <div class="row slide-margin">
                         <div class="col-sm-6">
                             <div class="carousel-content">
-                                <h2 class="animation animated-item-1">Welcome <span>Company</span></h2>
-                                <p class="animation animated-item-2">Accusantium doloremque laudantium totam rem aperiam, eaque ipsa...</p>
-                                <a class="btn-slide animation animated-item-3" href="#feature">Read More</a>
+                                <h2 class="animation animated-item-1">Selamat Datang Di <span><?= $profile->app_name ?></span></h2>
+                                <p class="animation animated-item-2"><?= $profile->description ?></p>
+                                <a class="btn-slide animation animated-item-3" href="#feature">Terjun lebih dalam!</a>
                             </div>
                         </div>
 
@@ -39,29 +39,29 @@
             <div class="col-md-3">
                 <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <i class="fa fa-book"></i>
-                    <h2>Full Responsive</h2>
-                    <p>Quisque eu ante at tortor imperdiet gravida nec sed turpis phasellus.</p>
+                    <h2>Pengembangan Web</h2>
+                    <p>Menerima layanan kustom pembuatan website dengan framework PHP (Laravel & CodeIgniter)</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <i class="fa fa-laptop"></i>
-                    <h2>Retina Ready</h2>
-                    <p>Quisque eu ante at tortor imperdiet gravida nec sed turpis phasellus.</p>
+                    <h2>Konsultan IT</h2>
+                    <p>Membantu menemukan solusi di setiap problematika dunia IT.</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
                     <i class="fa fa-heart-o"></i>
-                    <h2>Full Responsive</h2>
-                    <p>Quisque eu ante at tortor imperdiet gravida nec sed turpis phasellus.</p>
+                    <h2>Source Code Gratis</h2>
+                    <p>Menyediakan proyek-proyek gratis dan open source untuk dikembangkan bersama dan referensi belajar bagi pemula.</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms">
                     <i class="fa fa-cloud"></i>
-                    <h2>Friendly Code</h2>
-                    <p>Quisque eu ante at tortor imperdiet gravida nec sed turpis phasellus.</p>
+                    <h2>Tutorial Friendly Code</h2>
+                    <p>Membagikan beberapa tutorial seputar coding mulai dari start dasar sampai lanjut.</p>
                 </div>
             </div>
         </div>
@@ -71,8 +71,8 @@
 <div class="about">
     <div class="container">
         <div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <h2>about us</h2>
-            <img src="images/6.jpg" class="img-responsive" />
+            <h2>About Us</h2>
+            <img src="<?= base_url('uploads/profile/' . $profile->background_image) ?>" class="img-responsive" />
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero,
                 pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
             </p>
@@ -99,8 +99,8 @@
         <?php foreach($posts as $post) : ?>
             <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
                 <img style="width: 100%; height: 200px; object-fit: cover; object-position: center" src="<?= base_url('/uploads/post/' . $post->image) ?>" class="img-responsive" />
-                <h3><?= $post->title ?></h3>
-                <?= $post->body ?>
+                <h3><a href="<?= base_url('blog/' . $post->slug) ?>"><?= $post->title ?></a></h3>
+                <?= substr_replace($post->body, "...", 200) ?>
             </div>
         <?php endforeach ?>
     </div>
@@ -127,7 +127,7 @@
 </section> -->
 <!--/#partner-->
 
-<section id="contact-info">
+<section id="conatcat-info">
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
@@ -136,8 +136,8 @@
                         <i class="fa fa-phone"></i>
                     </div>
                     <div class="media-body">
-                        <h2>Have a question or need a custom quote?</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation <a href="https://wa.me/082117088123">+6282117088123</a></p>
+                        <h2>Mempunyai pertanyaan atau membutuhkan solusi?</h2>
+                        <p>Kami siap membantu dan melayani kebutuhan anda. Silahkan hubungi kontak ini. <a href="https://wa.me/082117088123">+6282117088123</a></p>
                     </div>
                 </div>
             </div>

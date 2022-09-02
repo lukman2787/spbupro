@@ -7,6 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title ?? 'SPBUpro-Home' ?></title>
 
+    <meta name="title" content="<?= $post->meta_title ?? 'SPBU Pro Media' ?>">
+    <meta name="description" content="<?= $post->meta_description ?? 'Programming Friendly dengan PHP dan Laravel' ?>">
+    <meta name="keyword" content="<?= $post->meta_keyword ?? 'Coding, PHP, Programming' ?>">
+
+    <meta property="og:title" content="<?= $post->meta_title ?? 'SPBU Pro Media' ?>" />
+    <meta property="og:description" content="<?= $post->meta_description ?? 'Programming Friendly dengan PHP dan Laravel' ?>" />
+    <meta property="og:url" content="<?= current_url(true) ?>" />
+    <meta property="og:image" itemprop="image" content="<?= base_url('uploads/post/' . isset($post->image)) ?>" />
+    <meta property="og:image:width" content="300">
+	<meta property="og:image:height" content="300">
+    <meta property="og:site_name" content="SPBU Pro Media">
+    <meta property="og:type" content="website" />
+    <meta property="og:updated_time" content="<?= $post->updated_at ?? '' ?>" />
+
     <!-- Bootstrap -->
     <link href="<?= base_url() ?>/frontend/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url() ?>/frontend/css/font-awesome.min.css">
@@ -36,7 +50,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <div class="navbar-brand">
-                            <a href="<?= base_url() ?>/frontend/index.html">
+                            <a href="<?= base_url() ?>">
                                 <h1><span><?php
                                 $profile = new App\Models\ProfileModel();
                                 echo $profile->first()->app_name;
@@ -74,18 +88,18 @@
                 <div class="social-icon">
                     <div class="col-md-4">
                         <ul class="social-network">
-                            <li><a href="<?= base_url() ?>/frontend/#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="<?= base_url() ?>/frontend/#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="<?= base_url() ?>/frontend/#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="<?= base_url() ?>/frontend/#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="<?= base_url() ?>/frontend/#" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
+                            <li><a href="https://facebook.com/ikhsanheriyawan" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="<?= base_url() ?>" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://github.com/ikhsanheriyawan2404" class="github tool-tip" title="Github"><i class="fa fa-github"></i></a></li>
+                            <li><a href="<?= base_url() ?>" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UC6DF1maLv7V7jS3EgsXe6tQ/videos" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-md-offset-4">
                     <div class="copyright">
-                        &copy; Company Theme. All Rights Reserved.
+                        &copy; 2022 - <?= date('Y') ?> <?= $profile->first()->app_name ?>. All Rights Reserved.
                         <div class="credits">
                             <!--
                 All the links in the footer should remain intact.
