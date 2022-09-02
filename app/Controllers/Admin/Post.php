@@ -140,8 +140,10 @@ class Post extends BaseController
 
 	public function delete($id = null)
 	{
+		$post = $this->posts->find($id);
 		$this->posts->delete($id);
 		$this->posts->deleteAllCategoryFromPost($id);
+		unlink('uploads/post/' . $post->image);
 		return redirect()->to(site_url('admin/post'))->with('success', 'Data berhasil dihapus');
 	}
 }
