@@ -31,12 +31,11 @@ class Group extends BaseController
 
 	public function edit($id = null)
 	{
-		// foreach ($this->groups->getPermissionsForGroup($id) as $permission) {}
 		return view('backend/groups/edit', [
 			'title' => 'Edit Group',
 			'permissions' => $this->permissions->findAll(),
 			'group' => $this->groups->find($id),
-			'permissionGroup' => $this->groups->getPermissionsForGroup($id),
+			'permissionsGroup' => $this->groups->getPermissionsForGroup($id),
 		]);
 	}
 
@@ -74,18 +73,22 @@ class Group extends BaseController
         }
 
 		$group = $this->groups->find($id);
-		$this->groups->update($id, [
-			'name' => $this->request->getPost('name'),
-			'description' => $this->request->getPost('description'),
-		]);
 
-		$permissions = $this->request->getPost('permission');
-		if (count($permissions) > 0) {
-            foreach ($permissions as $value) {
-				$this->groups->removePermissionFromGroup($value, $group->id);
-				$this->groups->addPermissionToGroup($value, $group->id);
-            }
-        }
+		$this->db->transStart();
+			$this->groups->update($id, [
+				'name' => $this->request->getPost('name'),
+				'description' => $this->request->getPost('description'),
+			]);
+
+			$db = \Config\Database::connect();
+			$db->table('auth_groups_permissions')->where('group_id', $group->id)->delete();
+			$permissions = $this->request->getPost('permission');
+			if (count($permissions) > 0) {
+				foreach ($permissions as $value) {
+					$this->groups->addPermissionToGroup($value, $group->id);
+				}
+			}
+		$this->db->transComplete();
 
 		return redirect()->to(site_url('admin/group'))->with('success', 'Data berhasil diedit');
 	}

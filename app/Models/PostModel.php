@@ -29,12 +29,13 @@ class PostModel extends Model
 	protected $skipValidation       = false;
 	protected $cleanValidationRules = true;
 
-	public function getPostWithCategory(int $postId)
+	public function getPostWithCategories(int $postId)
 	{
-		return $this->db->table('categories')
-				->join('category_post', 'category_post.post_id = categories.id')
+		return $this->db->table('posts')
+				->join('category_post', 'category_post.post_id = posts.id')
+				->join('categories', 'categories.id = category_post.category_id')
 				->where('post_id', $postId)
-				->get()->getResultArray();
+				->get()->getFirstRow();
 	}
 
 	public function addCategoryToPost(int $categoryId, int $postId)
@@ -62,4 +63,5 @@ class PostModel extends Model
 			->get()
 			->getFirstRow();
 	}
+
 }
