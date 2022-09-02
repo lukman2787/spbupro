@@ -22,15 +22,15 @@
             <ul class="nav nav-pills nav-child-indent nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+                <?php $uri = current_url(true);?>
                 <li class="nav-item">
-                    <a href="<?= site_url('admin/dashboard') ?>" class="nav-link">
+                    <a href="<?= site_url('admin/dashboard') ?>" class="nav-link <?= $uri->getSegment(2) === 'dashboard' ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
                 </li>
-                <?php $uri = current_url(true);?>
                 <?php if (has_permission('post-module')) : ?>
                 <li class="nav-item">
                     <a href="<?= site_url('admin/post') ?>" class="nav-link <?= $uri->getSegment(2) === 'post' ? 'active' : '' ?>">

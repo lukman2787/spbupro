@@ -37,8 +37,8 @@ $routes->get('blog', 'Blog::index');
 $routes->get('blog/(:segment)', 'Blog::show/$1');
 
 $routes->group('', ['filter' => 'login'], function($routes){
-	//controller admin dashboard
 	$routes->get('admin/dashboard', 'Admin\Dashboard::index');
+	//controller admin dashboard
 	$routes->get('admin/profile/edit', 'Admin\Dashboard::editProfile');
 	$routes->put('admin/profile/(:any)', 'Admin\Dashboard::updateProfile');
 });
