@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<section id="blog" class="container">
+<section class="container">
     <div class="blog">
         <div class="row">
             <div class="col-md-8">

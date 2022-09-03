@@ -80,7 +80,7 @@ class Post extends BaseController
 		// dd($this->categories->getPostCategory($id));
 		// dd($categoryPost);
 		return view('backend/posts/edit', [
-			'title' => 'Tambah Postingan',
+			'title' => 'Edit Postingan',
 			'categories' => $this->categories->findAll(),
 			'post' => $this->posts->find($id),
 			'categoryPost' => $this->categories->getPostCategory($id),

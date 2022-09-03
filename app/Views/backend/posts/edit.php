@@ -99,7 +99,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="body">Isi</label>
-                            <textarea name="body" id="body" class="form-control"><?= $post->body ?? old('body') ?></textarea>
+                            <textarea name="body" id="body" class="form-control"><?= $post->body ?></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-sm bg-navy float-right mt-3">Simpan</button>
