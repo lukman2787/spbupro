@@ -28,8 +28,8 @@ class Blog extends BaseController
 
 	public function show($slug = null)
 	{
-		if ($slug == false) {
-			throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: ' . $slug);
+		if (!$this->posts->find($slug)) {
+			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 		}
 
 		return view('frontend/blogs/show', [
