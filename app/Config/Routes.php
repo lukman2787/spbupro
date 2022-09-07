@@ -32,6 +32,9 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
+// Create Automation SiteMap
+$routes->get('sitemap\.xml', 'Sitemap::sitemap_index');
+
 $routes->get('/', 'Home::index');
 $routes->get('blog', 'Blog::index');
 $routes->get('blog/(:segment)', 'Blog::show/$1');

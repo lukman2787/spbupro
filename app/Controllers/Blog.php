@@ -28,7 +28,7 @@ class Blog extends BaseController
 
 	public function show($slug = null)
 	{
-		if (!$this->posts->find($slug)) {
+		if ($this->posts->where('slug', $slug)->get()->getFirstRow() == null) {
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 		}
 

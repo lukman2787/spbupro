@@ -83,7 +83,7 @@ class Post extends BaseController
 			'title' => 'Edit Postingan',
 			'categories' => $this->categories->findAll(),
 			'post' => $this->posts->find($id),
-			'categoryPost' => $this->categories->getPostCategory($id),
+			// 'categoryPost' => $this->categories->getPostCategory($id),
 			'categoryPost' => $categoryPost,
 		]);	
 	}
