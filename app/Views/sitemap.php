@@ -1,4 +1,4 @@
-<form action="<?= base_url('sitemap/create_sitemap') ?>" method="post" target="_blank">
+<form action="<?= base_url('sitemap/create_sitemap') ?>" method="post" target="_blank" rel="noopener" rel="noreferrer">
 	<?= csrf_field() ?>
 	<div class="form-group col-md-5" style="margin-left:-15px;">
         <div class="input-group">

@@ -61,7 +61,7 @@
                 <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms">
                     <i class="fa fa-cloud"></i>
                     <h2>Tutorial Friendly Code</h2>
-                    <p>Membagikan beberapa tutorial seputar coding mulai dari start dasar sampai lanjut.</p>
+                    <p>Membagikan beberapa tutorial seputar coding dan programming mulai dari dasar sampai lanjut.</p>
                 </div>
             </div>
         </div>
