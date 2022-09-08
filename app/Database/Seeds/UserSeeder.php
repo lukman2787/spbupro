@@ -14,18 +14,18 @@ class UserSeeder extends Seeder
 		$user = new UserModel();
 		$groups = new GroupModel();
 		$user->insert([
-			'username' => 'hery123',
+			'username' => 'ikhsan123',
 			'email' => 'ikhsan@gmail.com',
-			'password_hash' => Password::hash('ikhsan123'),
+			'password_hash' => Password::hash('Dadan123'),
 			'active' => 1,
 		]);
 
 		$groups->addUserToGroup($user->getInsertId(), 1);
 
 		$user->insert([
-			'username' => 'userfdsfds',
+			'username' => 'kuncoro123',
 			'email' => 'ikhsan24@gmail.com',
-			'password_hash' => Password::hash('ikhsan123'),
+			'password_hash' => Password::hash('Mihawk123'),
 			'active' => 1,
 		]);
 

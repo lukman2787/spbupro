@@ -23,7 +23,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet"
-    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github-dark.min.css">
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css">
     <link href="<?= base_url() ?>/frontend/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url() ?>/frontend/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/frontend/css/animate.css">
@@ -136,10 +136,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
 
     <!-- Optionally load a template from a CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-light.min.css" integrity="sha512-o5v54Kh5PH0dgnf9ei0L+vMRsbm5fvIvnR/XkrZZjN4mqdaeH7PW66tumBoQVIaKNVrLCZiBEfHzRY4JJSMK/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-light.min.css" integrity="sha512-o5v54Kh5PH0dgnf9ei0L+vMRsbm5fvIvnR/XkrZZjN4mqdaeH7PW66tumBoQVIaKNVrLCZiBEfHzRY4JJSMK/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 
-    <!-- Initialize highlight.js -->
-    <script>hljs.highlightAll();</script>
+    <?= $this->renderSection('custom-scripts') ?>
 
 </body>
 

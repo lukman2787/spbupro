@@ -23,7 +23,7 @@
                     } ?>
                     | <?= $post->username ?> |
                     Bagikan :
-                    <a href="whatsapp://send?text=<?= base_url('blog/' . $post->slug) ?>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Bagikan dong ke whatsapp kamu"><i class="fa fa-whatsapp"></i></a>
+                    <a href="whatsapp://send?text=<?= base_url('blog/' . $post->slug) ?>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Bagikan dong ke whatsapp kamu"><i class="fa fa-facebook"></i></a>
                     <a href="" class="btn btn-sm btn-success"><i class="fa fa-facebook"></i></a>
                 </p>
                 <hr>
@@ -79,5 +79,39 @@
     </div>
 </section>
 <!--/#blog-->
+
+<?= $this->endSection() ?>
+
+<?= $this->section('custom-scripts') ?>
+<style>
+    pre {
+        /* word-wrap: break-word;
+        white-space: pre;
+        overflow-x: auto;
+        font-size: 0.95em;
+        line-height: 1.5; */
+        /* max-height: fit-content; */
+        /* overflow: scroll; */
+        /* color:#f8f8f2; */
+        /* background-color:#282a36; */
+        /* -moz-tab-size:2; */
+        /* -o-tab-size:2; */
+        tab-size:2;
+        /* display:grid; */
+        padding: 0px;
+        font-size: 16px;
+    }
+
+    code {
+        font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+        white-space: nowrap;
+    }
+</style>
+<?= $this->endSection() ?>
+
+<?= $this->section('custom-scripts') ?>
+
+<!-- Initialize highlight.js -->
+<script>hljs.highlightAll();</script>
 
 <?= $this->endSection() ?>
