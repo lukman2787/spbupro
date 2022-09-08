@@ -19,7 +19,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
-$routes->setTranslateURIDashes(true);
+$routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(false);
 
@@ -33,10 +33,13 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 
 $routes->get('/', 'Home::index');
+$routes->get('privacy_policy', function () {
+	return view('privacy_policy');
+});
 $routes->get('blog', 'Blog::index');
 $routes->get('blog/(:segment)', 'Blog::show/$1');
 
-$routes->group('', ['filter' => 'login'], function($routes){
+$routes->group('', ['filter' => 'login'], function ($routes) {
 	// Create Automation SiteMap
 	$routes->get('sitemap', 'Sitemap::index');
 	$routes->post('sitemap/create_sitemap', 'Sitemap::create_sitemap');

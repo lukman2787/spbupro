@@ -16,14 +16,13 @@
     <meta property="og:url" content="<?= current_url(true) ?>" />
     <meta property="og:image" itemprop="image" content="<?= base_url('uploads/post/' . isset($post->image)) ?>" />
     <meta property="og:image:width" content="300">
-	<meta property="og:image:height" content="300">
+    <meta property="og:image:height" content="300">
     <meta property="og:site_name" content="SPBU Pro Media">
     <meta property="og:type" content="website" />
     <meta property="og:updated_time" content="<?= $post->updated_at ?? '' ?>" />
 
     <!-- Bootstrap -->
-    <link rel="stylesheet"
-    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css">
     <link href="<?= base_url() ?>/frontend/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url() ?>/frontend/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/frontend/css/animate.css">
@@ -54,9 +53,9 @@
                         <div class="navbar-brand">
                             <a href="<?= base_url() ?>">
                                 <h1><span><?php
-                                $profile = new App\Models\ProfileModel();
-                                echo $profile->first()->app_name;
-                                ?></span></h1>
+                                            $profile = new App\Models\ProfileModel();
+                                            echo $profile->first()->app_name;
+                                            ?></span></h1>
                             </a>
                         </div>
                     </div>
@@ -64,15 +63,12 @@
                     <div class="navbar-collapse collapse">
                         <div class="menu">
                             <ul class="nav nav-tabs" role="tablist">
-                                <?php $uri = current_url(true);?>
+                                <?php $uri = current_url(true); ?>
                                 <li role="presentation"><a href="<?= base_url() ?>" class="<?= $uri->getSegment(1) === '' ? 'active' : '' ?>">Home</a></li>
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/about.html">About Us</a></li> -->
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/services.html">Services</a></li> -->
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/portfolio.html">Portfolio</a></li> -->
                                 <li role="presentation"><a href="<?= base_url('blog') ?>" class="<?= $uri->getSegment(1) === 'blog' ? 'active' : '' ?>">Blog</a></li>
-                                <?php if (logged_in()) : ?>
-                                    <li role="presentation"><a href="<?= base_url('admin/dashboard') ?>" class="<?= $uri->getSegment(1) === 'admin' ? 'active' : '' ?>">Dashboard</a></li>
-                                <?php endif ?>
                                 <!-- <li role="presentation"><a href="<?= base_url() ?>/frontend/contact.html">Contact</a></li> -->
                             </ul>
                         </div>
@@ -82,7 +78,94 @@
         </nav>
     </header>
 
-    <?= $this->renderSection('content') ?>
+    <div id="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb">
+                <li><a href="<?= base_url() ?>">Home</a></li>
+                <li>Blog</li>
+            </div>
+        </div>
+    </div>
+
+    <section class="container">
+        <div class="blog">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible;-webkit-animation-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 300ms; -moz-animation-delay: 300ms; animation-delay: 300ms;">
+                        <h3>Privacy Policy Untuk SPBU Pro Media</h3>
+                        <hr>
+                        <div style="margin-bottom: 30px; margin-top: 30px">
+<p>Di SPBUProMedia, dapat diakses dari spbupromedia.com, salah satu prioritas utama kami adalah privasi pengunjung kami. Dokumen Kebijakan Privasi ini berisi jenis informasi yang dikumpulkan dan dicatat oleh spbupromedia.com dan bagaimana kami menggunakannya.</p>
+
+<p>Jika Anda memiliki pertanyaan tambahan atau memerlukan informasi lebih lanjut tentang Kebijakan Privasi kami, jangan ragu untuk menghubungi kami.</p>
+
+<h3>Informasi yang Kami Kumpulkan</h3>
+
+<p>spbupromedia.com mengikuti prosedur standar menggunakan file log. File-file ini mencatat pengunjung ketika mereka mengunjungi situs web. Semua perusahaan hosting melakukan ini dan merupakan bagian dari analisis layanan hosting. Informasi yang dikumpulkan oleh file log termasuk alamat protokol internet (IP), jenis browser, Penyedia Layanan Internet (ISP), tanggal dan waktu, halaman rujukan/keluar, dan mungkin jumlah klik. Ini tidak terkait dengan informasi apa pun yang dapat diidentifikasi secara pribadi. Tujuan informasi adalah untuk menganalisis tren, mengelola situs, melacak pergerakan pengguna di situs web, dan mengumpulkan informasi demografis.</p>
+
+<h3>Cookies</h3>
+
+<p>Seperti situs web lainnya, spbupromedia.com menggunakan ‘cookie’. Cookie digunakan untuk menyimpan informasi seperti preferensi pengunjung dan halaman yang diakses atau dikunjungi pengunjung pada situs web ini. Informasi tersebut kami gunakan untuk mengoptimalkan pengalaman pengguna dengan menyesuaikan konten halaman web kami.</p>
+
+<h3>Kebijakan Privasi Pihak Ketiga</h3>
+
+<p>Kebijakan Privasi spbupromedia.com tidak berlaku untuk pengiklan atau situs web lain. Karena itu, kami menyarankan Anda untuk membaca seksama masing-masing Kebijakan Privasi dari pihak ketiga untuk informasi yang lebih rinci. Anda berhak untuk menonaktifkan cookies pada browser Anda.</p>
+
+<h3>Informasi Anak</h3>
+
+<p>Salah satu prioritas kami adalah membantu perlindungan untuk anak-anak saat menggunakan internet. Kami mendorong orang tua dan wali untuk mengamati, berpartisipasi, memantau, dan membimbing aktivitas online mereka.</p>
+<p>spbupromedia.com tidak dengan sengaja mengumpulkan informasi identifikasi pribadi apa pun dari anak-anak di bawah umur. Jika menurut Anda anak Anda memberikan informasi semacam ini di situs web kami, kami sangat menganjurkan Anda untuk segera menghubungi kami dan kami akan melakukan upaya terbaik kami untuk segera hapus informasi tersebut dari catatan kami.</p>
+
+<h3>Persetujuan</h3>
+
+<p>Dengan menggunakan situs web kami, Anda dengan ini menyetujui Kebijakan Privasi kami dan menyetujui syarat dan ketentuannya.</p>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-5 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible;-webkit-animation-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 600ms; -moz-animation-delay: 600ms; animation-delay: 600ms;"> -->
+                </div>
+                <!--/.col-md-8-->
+
+                <aside class="col-md-4">
+
+
+                    <!-- <div class="widget categories">
+                    <h3>Recent Comments</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="single_comments">
+                                <img src="images/blog/avatar3.png" alt="" />
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p>
+                                <div class="entry-meta small muted">
+                                    <span>By <a href="#">Alex</a></span>
+                                </div>
+                            </div>
+                            <div class="single_comments">
+                                <img src="images/blog/avatar3.png" alt="" />
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p>
+                                <div class="entry-meta small muted">
+                                    <span>By <a href="#">Alex</a></span>
+                                </div>
+                            </div>
+                            <div class="single_comments">
+                                <img src="images/blog/avatar3.png" alt="" />
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p>
+                                <div class="entry-meta small muted">
+                                    <span>By <a href="#">Alex</a></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div> -->
+                    <!--/.recent comments-->
+
+
+                </aside>
+            </div>
+            <!--/.row-->
+        </div>
+    </section>
+    <!--/#blog-->
 
     <footer>
         <div class="footer">
@@ -101,7 +184,7 @@
 
                 <div class="col-md-4 col-md-offset-4">
                     <div class="copyright">
-                        &copy; 2022 - <?= date('Y') ?> <?= $profile->first()->app_name ?>. All Rights Reserved. <a href="<?= base_url('privacy_policy') ?>">Kebijakan Privasi</a>
+                        &copy; 2022 - <?= date('Y') ?> <?= $profile->first()->app_name ?>. All Rights Reserved.
                         <div class="credits">
                             <!--
                 All the links in the footer should remain intact.
