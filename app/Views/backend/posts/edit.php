@@ -99,7 +99,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="body">Isi</label>
-                            <textarea name="body" id="body" class="form-control"><?= $post->body ?></textarea>
+                            <textarea name="body" id="body" class="form-control"><?= esc($post->body) ?></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-sm bg-navy float-right mt-3">Simpan</button>
@@ -125,6 +125,29 @@
 <!-- CKEditor 5 -->
 <script src="<?= base_url('backend') ?>/plugins/ckeditor5/build/ckeditor.js"></script>
 <script>
+    ClassicEditor
+    .create( document.querySelector('#body'), {
+        // codeBlock: {
+        //     languages: [
+        //         // Do not render the CSS class for the plain text code blocks.
+        //         { language: 'plaintext', label: 'Plain text', class: '' },
+        //         { language: 'html', label: 'HTML' },
+
+        //         // Use the "php-code" class for PHP code blocks.
+        //         { language: 'php', label: 'PHP', class: 'php-code' },
+
+        //         // Use the "js" class for JavaScript code blocks.
+        //         // Note that only the first ("js") class will determine the language of the block when loading data.
+        //         { language: 'javascript', label: 'JavaScript', class: 'js javascript js-code' },
+
+        //         // Python code blocks will have the default "language-python" CSS class.
+        //         { language: 'python', label: 'Python' }
+        //     ]
+        // }
+    })
+    .catch( error => {
+        console.error( error );
+    });
 
     $(document).ready(function() {
         $('#category').select2({
@@ -138,30 +161,9 @@
         //     maxHeight: null,             // set maximum height of editor
         //     focus: true                  // set focus to editable area after initializing summernote
         // });
-        ClassicEditor
-        .create( document.querySelector('#body'), {
-            codeBlock: {
-                languages: [
-                    // Do not render the CSS class for the plain text code blocks.
-                    { language: 'plaintext', label: 'Plain text', class: '' },
-                    { language: 'html', label: 'HTML' },
-
-                    // Use the "php-code" class for PHP code blocks.
-                    { language: 'php', label: 'PHP', class: 'php-code' },
-
-                    // Use the "js" class for JavaScript code blocks.
-                    // Note that only the first ("js") class will determine the language of the block when loading data.
-                    { language: 'javascript', label: 'JavaScript', class: 'js javascript js-code' },
-
-                    // Python code blocks will have the default "language-python" CSS class.
-                    { language: 'python', label: 'Python' }
-                ]
-            }
-        })
-        .catch( error => {
-            console.error( error );
-        });
     });
+
+    // Array.from( editor.ui.componentFactory.names() );
 
 </script>
 

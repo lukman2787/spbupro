@@ -139,27 +139,30 @@
         // });
         ClassicEditor
         .create( document.querySelector('#body'), {
-            codeBlock: {
-                languages: [
-                    // Do not render the CSS class for the plain text code blocks.
-                    { language: 'plaintext', label: 'Plain text', class: '' },
-                    { language: 'html', label: 'HTML' },
+            // codeBlock: {
+            //     languages: [
+            //         // Do not render the CSS class for the plain text code blocks.
+            //         { language: 'plaintext', label: 'Plain text', class: '' },
+            //         { language: 'html', label: 'HTML' },
 
-                    // Use the "php-code" class for PHP code blocks.
-                    { language: 'php', label: 'PHP', class: 'php-code' },
+            //         // Use the "php-code" class for PHP code blocks.
+            //         { language: 'php', label: 'PHP', class: 'php-code' },
 
-                    // Use the "js" class for JavaScript code blocks.
-                    // Note that only the first ("js") class will determine the language of the block when loading data.
-                    { language: 'javascript', label: 'JavaScript', class: 'js javascript js-code' },
+            //         // Use the "js" class for JavaScript code blocks.
+            //         // Note that only the first ("js") class will determine the language of the block when loading data.
+            //         { language: 'javascript', label: 'JavaScript', class: 'js javascript js-code' },
 
-                    // Python code blocks will have the default "language-python" CSS class.
-                    { language: 'python', label: 'Python' }
-                ]
-            }
+            //         // Python code blocks will have the default "language-python" CSS class.
+            //         { language: 'python', label: 'Python' }
+            //     ]
+            // }
         })
         .catch( error => {
             console.error( error );
         });
+
+    Array.from( editor.ui.componentFactory.names() );
+
     });
 
 </script>
