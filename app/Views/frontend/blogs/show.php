@@ -28,7 +28,7 @@
                 </p>
                 <hr>
                 <div class="wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible;-webkit-animation-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 300ms; -moz-animation-delay: 300ms; animation-delay: 300ms;">
-                    <img src="<?= base_url('/uploads/post/' . $post->image) ?>" class="img-responsive" style="width: 100%; height: 400px; object-fit: cover; object-position: center;">
+                    <img src="<?= base_url('/uploads/post/' . $post->image) ?>" alt="SPbu Pro Media" class="img-responsive" style="width: 100%; height: 400px; object-fit: cover; object-position: center;">
                     <!-- <h4><?= esc($post->title) ?></h4> -->
                     <div style="margin-bottom: 30px; margin-top: 30px">
                         <?= $post->body ?>

@@ -72,7 +72,7 @@
     <div class="container">
         <div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h2>About Us</h2>
-            <img src="<?= base_url('uploads/profile/' . $profile->background_image) ?>" class="img-responsive" />
+            <img src="<?= base_url('uploads/profile/' . $profile->background_image) ?>" class="img-responsive" / alt="About SPBU Pro">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero,
                 pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
             </p>
@@ -98,7 +98,7 @@
         </div>
         <?php foreach($posts as $post) : ?>
             <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-                <img style="width: 100%; height: 200px; object-fit: cover; object-position: center" src="<?= base_url('/uploads/post/' . $post->image) ?>" class="img-responsive" />
+                <img style="width: 100%; height: 200px; object-fit: cover; object-position: center" alt="latest blog" src="<?= base_url('/uploads/post/' . $post->image) ?>" class="img-responsive" />
                 <h3><a href="<?= base_url('blog/' . $post->slug) ?>"><?= $post->title ?></a></h3>
                 <?= substr_replace($post->body, "... Baca selengkapnya", 200) ?>
             </div>

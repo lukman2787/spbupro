@@ -19,7 +19,7 @@
                 <div class="blog-item">
                     <div class="row">
                         <div class="col-xs-12 col-sm-10 blog-content">
-                            <a href="#"><img class="img-responsive img-fluid rounded" style="width: 100%; height: 270px; object-fit: cover; object-position: center" src="<?= base_url('/uploads/post/' . $post->image) ?? base_url('/uploads/profile/' . $profile->background_image) ?>"/></a>
+                            <a href="#"><img class="img-responsive img-fluid rounded" style="width: 100%; height: 270px; object-fit: cover; object-position: center" alt="SPBU Pro Media" src="<?= base_url('/uploads/post/' . $post->image) ?? base_url('/uploads/profile/' . $profile->background_image) ?>"/></a>
                             <h4><?= $post->title ?></h4>
                             <a href="<?= base_url('blog/' . $post->slug) ?>" class="btn btn-primary">Baca selengkapnya <i class="fa fa-angle-right"></i></a>
                         </div>
@@ -150,7 +150,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('custom-styles') ?>
-<style>
+<!-- <style>
     .img {
         width: 100%;
         max-width: inherit;
@@ -162,5 +162,5 @@
         -o-transform: translate(-50%, -50%) scale(1.5);
         transform: translate(-50%, -50%) scale(1.5); */
     }
-</style>
+</style> -->
 <?= $this->endSection() ?>
