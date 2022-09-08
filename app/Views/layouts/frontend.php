@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title ?? 'SPBUpro-Home' ?></title>
 
-    <meta name="title" content="<?= $post->meta_title ?? 'SPBU Pro Media' ?>">
+    <meta name="title" content="<?= $post->meta_title ?? 'SPBU Pro Media | Tuturial Coding & Programming Friendly' ?>">
     <meta name="description" content="<?= $post->meta_description ?? 'Programming Friendly dengan PHP dan Laravel' ?>">
     <meta name="keyword" content="<?= $post->meta_keyword ?? 'Coding, PHP, Programming' ?>">
 
-    <meta property="og:title" content="<?= $post->meta_title ?? 'SPBU Pro Media' ?>" />
-    <meta property="og:description" content="<?= $post->meta_description ?? 'Programming Friendly dengan PHP dan Laravel' ?>" />
+    <meta property="og:title" content="<?= $post->meta_title ?? 'SPBU Pro Media | Tuturial Coding & Programming Friendly' ?>" />
+    <meta property="og:description" content="<?= $post->meta_description ?? 'SPBU Pro Media | Tuturial Coding & Programming Friendly' ?>" />
     <meta property="og:url" content="<?= current_url(true) ?>" />
     <meta property="og:image" itemprop="image" content="<?= base_url('uploads/post/' . isset($post->image)) ?>" />
     <meta property="og:image:width" content="300">

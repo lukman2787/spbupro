@@ -76,7 +76,8 @@
 			<?php if (! empty($message) && $message !== '(null)') : ?>
 				<?= nl2br(esc($message)) ?>
 			<?php else : ?>
-				Sorry! Cannot seem to find the page you were looking for.
+				Mohon maaf! Tidak bisa menampilkan apa yang kamu minta.
+				<a href="<?= base_url() ?>">Kembali lagi yuk</a>
 			<?php endif ?>
 		</p>
 	</div>
