@@ -7,10 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title ?? 'SPBUpro-Home' ?></title>
 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MJG92HK');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="google-site-verification" content="r-JzRqkZxfshrFVfAxVcVBBGOJOyg_HRPq9KNPFQKNU" />
     <meta name="title" content="<?= $post->meta_title ?? 'SPBU Pro Media | Tuturial Coding & Programming Friendly' ?>">
     <meta name="description" content="<?= $post->meta_description ?? 'Kami hadir untuk membagikan sc code aplikasi gratis | Sharing tuturial-tutorial yang friendly | Melayani jasa pembuatan aplikasi berbasis website' ?>">
     <meta name="keyword" content="<?= $post->meta_keyword ?? 'Coding, PHP, Programming' ?>">
-
+    
     <meta property="og:title" content="<?= $post->meta_title ?? 'SPBU Pro Media | Tuturial Coding & Programming Friendly' ?>" />
     <meta property="og:description" content="<?= $post->meta_description ?? 'Kami hadir untuk membagikan sc code aplikasi gratis | Sharing tuturial-tutorial yang friendly | Melayani jasa pembuatan aplikasi berbasis website' ?>" />
     <meta property="og:url" content="<?= current_url(true) ?>" />
@@ -40,6 +48,10 @@
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJG92HK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <header>
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="navigation">
@@ -137,6 +149,10 @@
 
     <!-- Optionally load a template from a CDN -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-light.min.css" integrity="sha512-o5v54Kh5PH0dgnf9ei0L+vMRsbm5fvIvnR/XkrZZjN4mqdaeH7PW66tumBoQVIaKNVrLCZiBEfHzRY4JJSMK/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    
+    <!-- Script Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9611135992226535"
+     crossorigin="anonymous"></script>
 
     <?= $this->renderSection('custom-scripts') ?>
 
