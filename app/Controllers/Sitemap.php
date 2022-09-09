@@ -37,7 +37,7 @@ class Sitemap extends Controller
 			//Untuk konten URLnya silahkan di sesuaikan dengan punya anda
 			$dataposts = $this->db->table('posts')->get()->getResult();
 			foreach($dataposts as $entry){
-				$this->libsitemap->add(base_url('blog/') . $entry->slug, date('Y-m-d', now()), $changefreq, $priority);
+				$this->libsitemap->add(base_url('blog/' . $entry->slug), date('Y-m-d', now()), $changefreq, $priority);
 			}
 
 
