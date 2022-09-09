@@ -19,10 +19,9 @@
                 <div class="blog-item">
                     <div class="row">
                         <div class="col-xs-12 col-sm-10 blog-content">
-                            <a href="#"><img class="img-responsive img-fluid img-blog" style="width: 100%; height: 270px; object-fit: cover; object-position: center" alt="SPBU Pro Media" src="<?= base_url('/uploads/post/' . $post->image) ?? base_url('/uploads/profile/' . $profile->background_image) ?>"/></a>
+                            <a href="#"><img class="img-responsive img-fluid rounded" style="width: 100%; height: 270px; object-fit: cover; object-position: center" alt="SPBU Pro Media" src="<?= base_url('/uploads/post/' . $post->image) ?? base_url('/uploads/profile/' . $profile->background_image) ?>"/></a>
                             <h4><?= $post->title ?></h4>
                             <p><?= date('d-M-Y', strtotime($post->created_at)) ?>
-                                |
                                 <?php foreach ($categories->getPostCategory($post->id) as $category) : ?>
                                 <a href="<?= base_url('blog/category/' . $category->slug) ?>"><?= $category->name; ?></a>
                                 <?php endforeach ?>
@@ -42,7 +41,6 @@
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>
                     <li><a href="#">Next Page<i class="fa fa-long-arrow-right"></i></a></li> -->
-                    <?= $pager->links() ?>
                 </ul>
                 <!--/.pagination-->
             </div>

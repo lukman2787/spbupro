@@ -6,7 +6,8 @@
     <div class="container">
         <div class="breadcrumb">
             <li><a href="<?= base_url() ?>">Home</a></li>
-            <li>Blog</li>
+            <li><a href="<?= base_url('blog') ?>">Blog</a></li>
+            <li><?= $post->title ?></li>
         </div>
     </div>
 </div>
@@ -17,11 +18,11 @@
             <div class="col-md-8">
                 <h3><?= $post->title ?></h3>
                 <p>
-                    <?= $post->created_at ?> |
-                    <?php foreach($categories as $category) {
-                        echo $category->name . ' ';
-                    } ?>
-                    | <?= $post->username ?> |
+                    <?= date('d-M-Y', strtotime($post->created_at)) ?> |
+                    <?php foreach($categories->getPostCategory($post->id) as $category) : ?>
+                        <a href="<?= base_url('blog/category/' . $category->slug) ?>"><?= $category->name ?></a>
+                    <?php endforeach ?>
+                    |
                     Bagikan :
                     <a href="whatsapp://send?text=<?= base_url('blog/' . $post->slug) ?>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Bagikan dong ke whatsapp kamu"><i class="fa fa-facebook"></i></a>
                     <a href="" class="btn btn-sm btn-success"><i class="fa fa-facebook"></i></a>
@@ -34,48 +35,47 @@
                         <?= $post->body ?>
                     </div>
                 </div>
-      <!-- <div class="col-md-5 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible;-webkit-animation-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 600ms; -moz-animation-delay: 600ms; animation-delay: 600ms;"> -->
+                <!-- <div class="col-md-5 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible;-webkit-animation-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 600ms; -moz-animation-delay: 600ms; animation-delay: 600ms;"> -->
             </div>
             <!--/.col-md-8-->
 
             <aside class="col-md-4">
                 
-
-                <!-- <div class="widget categories">
-                    <h3>Recent Comments</h3>
+                <div class="widget categories">
+                    <h3>Kategori</h3>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="single_comments">
-                                <img src="images/blog/avatar3.png" alt="" />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p>
-                                <div class="entry-meta small muted">
-                                    <span>By <a href="#">Alex</a></span>
-                                </div>
-                            </div>
-                            <div class="single_comments">
-                                <img src="images/blog/avatar3.png" alt="" />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p>
-                                <div class="entry-meta small muted">
-                                    <span>By <a href="#">Alex</a></span>
-                                </div>
-                            </div>
-                            <div class="single_comments">
-                                <img src="images/blog/avatar3.png" alt="" />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p>
-                                <div class="entry-meta small muted">
-                                    <span>By <a href="#">Alex</a></span>
-                                </div>
-                            </div>
-
+                        <div class="col-sm-6">
+                            <ul class="blog_category">
+                                <?php foreach($categories->findAll() as $category) : ?>
+                                    <li><a href="<?= base_url('blog/category/' . $category->slug) ?>"><?= $category->name ?> <span class="badge"><?= $categories->countPostsBelongsToCategory($category->id) ?></span></a></li>
+                                <?php endforeach ?>
+                            </ul>
                         </div>
                     </div>
-                </div> -->
-                <!--/.recent comments-->
+                </div>
+                <!--/.categories-->
+
+                <div class="widget categories">
+                    <h3>Post Terkait</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <?php foreach ($posts->getPostsBelongsToCategory($category->slug) as $value) : ?>
+                            <div class="single_comments">
+                                <p><?= $value->title ?></p>
+                                <div class="entry-meta small muted">
+                                    <span><?= date('d-m-Y', strtotime($value->created_at)) ?></span>
+                                </div>
+                            </div>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
+                </div>
+                <!--/.recent comments -->
 
 
             </aside>
         </div>
-        <!--/.row-->
+        <!--/.row -->
     </div>
 </section>
 <!--/#blog-->

@@ -37,6 +37,7 @@ $routes->get('privacy_policy', function () {
 	return view('privacy_policy');
 });
 $routes->get('blog', 'Blog::index');
+$routes->get('blog/category/(:segment)', 'Blog::category/$1');
 $routes->get('blog/(:segment)', 'Blog::show/$1');
 
 $routes->group('', ['filter' => 'login'], function ($routes) {

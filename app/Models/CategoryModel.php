@@ -54,4 +54,13 @@ class CategoryModel extends Model
             ->where('post_id', $postId)
             ->get()->getResultObject();
 	}
+
+	public function countPostsBelongsToCategory($categoryId)
+	{
+		$builder = $this->db->table('category_post');
+		return $builder->selectCount('id')
+				->where('category_id', $categoryId)
+				->get()
+				->getFirstRow()->id;
+	}
 }

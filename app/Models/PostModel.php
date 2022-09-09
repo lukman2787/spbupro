@@ -29,19 +29,15 @@ class PostModel extends Model
 	protected $skipValidation       = false;
 	protected $cleanValidationRules = true;
 
-	public function getCategory()
+	public function getPostsBelongsToCategory($slug)
 	{
-		return $this->db->table('categories');
-	}
-
-	public function getAllPost()
-	{
-		return $this->db
-			->table('posts')
-			->join('category_post', 'category_post.post_id = posts.id')
-			->join('categories', 'categories.id = category_post.category_id')
-			->get()
-			->getResultArray();
+		$builder = $this->db->table('categories');
+		return $builder->select('*')
+				->join('category_post', 'category_post.category_id = categories.id')
+				->join('posts', 'posts.id = category_post.post_id')
+				->where('categories.slug', $slug)
+				->get()
+				->getResultObject();
 	}
 
 	public function getPostWithCategories(int $postId)
